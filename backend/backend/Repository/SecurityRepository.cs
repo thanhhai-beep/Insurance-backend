@@ -9,14 +9,14 @@ namespace backend.Repository
 {
     public class SecurityRepository : ISecurity
     {
-        private readonly EmployeeDbContext _con;
-        public SecurityRepository(EmployeeDbContext con)
+        private readonly InsuranceDBContext _con;
+        public SecurityRepository(InsuranceDBContext con)
         {
             _con = con;
         }
-        public async Task<Employee> Login(string username, string password)
+        public async Task<UserLogin> Login(string username, string password)
         {
-            return await _con.employees.FirstOrDefaultAsync(s => s.username == username && s.password == password);
+            return await _con.UserLogins.FirstOrDefaultAsync(s => s.Username == username && s.PassWord == password);
         }
     }
 }

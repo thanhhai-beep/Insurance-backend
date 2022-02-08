@@ -8,6 +8,6 @@ namespace backend.Repository
 {
     public interface ISecurity
     {
-        Task<Employee> Login(string username, string password);
+        Task<UserLogin> Login(string username, string password);
     }
 }

@@ -32,8 +32,7 @@ namespace backend
 
             services.AddControllers();
             services.AddScoped<ISecurity, SecurityRepository>();
-            services.AddScoped<IEmployee, EmpRepository>();
-            services.AddDbContext<EmployeeDbContext>(o => o.UseSqlServer(Configuration.GetConnectionString("insurance")));
+            services.AddDbContext<InsuranceDBContext>(o => o.UseSqlServer(Configuration.GetConnectionString("insurance")));
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "backend", Version = "v1" });
