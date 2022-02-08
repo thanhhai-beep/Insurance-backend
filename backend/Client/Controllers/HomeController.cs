@@ -26,5 +26,9 @@ namespace Client.Controllers
         {
             return View();
         }
+        public IActionResult HomePages()
+        {
+            return View();
+        }
     }
 }

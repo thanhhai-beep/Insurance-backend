@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "D:\\HAI\\react-js\\insurance\\Insurance-backend-API\\backend\\backend\\backend.csproj": {}
+    "D:\\Clone\\Insurance-backend\\backend\\backend\\backend.csproj": {}
   },
   "projects": {
-    "D:\\HAI\\react-js\\insurance\\Insurance-backend-API\\backend\\backend\\backend.csproj": {
+    "D:\\Clone\\Insurance-backend\\backend\\backend\\backend.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\HAI\\react-js\\insurance\\Insurance-backend-API\\backend\\backend\\backend.csproj",
+        "projectUniqueName": "D:\\Clone\\Insurance-backend\\backend\\backend\\backend.csproj",
         "projectName": "backend",
-        "projectPath": "D:\\HAI\\react-js\\insurance\\Insurance-backend-API\\backend\\backend\\backend.csproj",
-        "packagesPath": "C:\\Users\\TIDI\\.nuget\\packages\\",
-        "outputPath": "D:\\HAI\\react-js\\insurance\\Insurance-backend-API\\backend\\backend\\obj\\",
+        "projectPath": "D:\\Clone\\Insurance-backend\\backend\\backend\\backend.csproj",
+        "packagesPath": "C:\\Users\\Van Thao\\.nuget\\packages\\",
+        "outputPath": "D:\\Clone\\Insurance-backend\\backend\\backend\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\TIDI\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Van Thao\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
