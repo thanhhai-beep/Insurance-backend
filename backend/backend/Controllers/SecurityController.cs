@@ -26,13 +26,21 @@ namespace backend.Controllers
                 return BadRequest(false);
             }
             var login = await _secu.Login(username, password);
-            if (login is null)
+            if (login != null)
             {
-                return Ok(false);
+                return Ok(true);
+                //if(login.Roles == true)
+                //{
+                //    return Ok("Admin");
+                //}
+                //else
+                //{
+                //    return Ok("Emp");
+                //}
             }
             else
             {
-                return Ok(true);
+                return Ok(false);
             }
         }
     }
