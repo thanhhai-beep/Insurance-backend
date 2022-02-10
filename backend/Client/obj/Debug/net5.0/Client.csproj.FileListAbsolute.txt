@@ -294,3 +294,17 @@ D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Client.dll
 D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\ref\Client.dll
 D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Client.pdb
 D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Client.genruntimeconfig.cache
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Views\Home\HomePages.cshtml.g.cs
+D:\Clone\Insurance-backend\backend\Client\bin\Debug\net5.0\System.Web.Mvc.dll
+D:\Clone\Insurance-backend\backend\Client\bin\Debug\net5.0\System.Web.Razor.dll
+D:\Clone\Insurance-backend\backend\Client\bin\Debug\net5.0\System.Web.Helpers.dll
+D:\Clone\Insurance-backend\backend\Client\bin\Debug\net5.0\System.Web.WebPages.Deployment.dll
+D:\Clone\Insurance-backend\backend\Client\bin\Debug\net5.0\System.Web.WebPages.Razor.dll
+D:\Clone\Insurance-backend\backend\Client\bin\Debug\net5.0\System.Web.WebPages.dll
+D:\Clone\Insurance-backend\backend\Client\bin\Debug\net5.0\Microsoft.Web.Infrastructure.dll
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\AdminLayout.cshtml.g.cs
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\Error.cshtml.g.cs
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\_ViewImports.cshtml.g.cs
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\_ViewStart.cshtml.g.cs
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Areas\Admin\Views\Home\Index.cshtml.g.cs
