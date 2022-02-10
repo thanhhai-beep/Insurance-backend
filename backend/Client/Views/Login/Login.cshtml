@@ -1,27 +1,32 @@
 ﻿@model Client.Models.UserLogin
-<h2 class="text-center">Login</h2>
-@ViewBag.mess
-<div class="container">
-    <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4 testtttttt">
-            <form asp-action="Login" method="post">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Username" class="col-form-label">User Name</label>
-                    <input asp-for="Username" class="form-control" />
-                    <span asp-validation-for="Username" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="PassWord" class="col-form-label">Password</label>
-                    <input asp-for="PassWord" class="form-control" />
-                    <span asp-validation-for="PassWord" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Login</button>
-                </div>
-            </form>
-        </div>
-        <div class="col-lg-4"></div>
+<form asp-action="Login" method="post" class="p-3">
+    <div class="form-group">
+        <label for="recipient-name" class="col-form-label">Username</label>
+        <input type="text" class="form-control" placeholder=" " name="username" id="recipient-name" required="">
     </div>
-</div>
+    <div class="form-group">
+        <label for="password" class="col-form-label">Password</label>
+        <input type="password" class="form-control" placeholder=" " name="password" id="password" required="">
+    </div>
+    <div class="right-w3l">
+        <input type="submit" class="form-control" value="Login">
+    </div>
+    <div class="row sub-w3l my-3">
+        <div class="col sub-agile">
+            <input type="checkbox" id="brand1" value="">
+            <label for="brand1" class="text-white">
+                <span></span>Remember me?
+            </label>
+        </div>
+        <div class="col forgot-w3l text-right">
+            <a href="#" class="text-white">Forgot Password?</a>
+        </div>
+    </div>
+    <p class="text-center dont-do text-white">
+        Don't have an account?
+        <a href="#" data-toggle="modal" data-target="#exampleModal1" class="text-white">
+            Register Now
+        </a>
+
+    </p>
+</form>

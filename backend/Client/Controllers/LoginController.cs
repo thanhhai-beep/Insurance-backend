@@ -12,8 +12,11 @@ namespace Client.Controllers
 {
     public class LoginController : Controller
     {
-        private readonly string url = "http://localhost:40316/api/UserLogin/";
-        HttpClient client = new HttpClient();
+        private readonly InsuranceDBContext _con;
+        public LoginController(InsuranceDBContext con)
+        {
+            _con = con;
+        }
         [HttpGet]
         public ActionResult Login()
         {
@@ -26,36 +29,27 @@ namespace Client.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login([Bind("Username, Pass")] UserLogin log)
+        public ActionResult Login(string username, string password)
         {
-            var login = JsonConvert.DeserializeObject<IEnumerable<UserLogin>>(client.GetStringAsync(url).Result);
-            var user = login.SingleOrDefault(e => e.Username.Equals(log.Username));
-            if (user != null)
+            if(username != null && password != null)
             {
-                HttpContext.Session.SetString("UserLogin", log.Username);
-                TempData["UserLogin"] = log.Username;
-                if (user.PassWord.Equals(log.PassWord))
+                var login = _con.UserLogins.FirstOrDefault(s => s.Username == username && s.PassWord == password);
+                if(login != null)
                 {
-                    //TempData["UserLogin"] = HttpContext.Session.GetString("UserLogin");
-                    if (user.Roles == true)
-                    {
-                        return RedirectToAction("Dashboard");
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index");
-                    }
+                    TempData["UserLogin"] = "success";
+                    return View();
                 }
                 else
                 {
-                    ViewBag.mess = "Invalid password";
+                    TempData["UserLogin"] = "falseeee";
+                    return View();
                 }
             }
             else
             {
-                ViewBag.mess = "Invalid UserName";
+                TempData["UserLogin"] = "false";
+                return View();
             }
-            return View();
         }
     }
 }
