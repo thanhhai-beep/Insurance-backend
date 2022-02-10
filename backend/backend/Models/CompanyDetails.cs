@@ -6,13 +6,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace backend.Models
 {
-    public partial class HospitalInfo
+    public partial class CompanyDetails
     {
         [Key]
         public int Id { get; set; }
-        public string HospitalName { get; set; }
-        public string Phone { get; set; }
+        public string CompanyName { get; set; }
         public string Address { get; set; }
-        public string Url { get; set; }
+        public string Phone { get; set; }
+        public string CompanyUrl { get; set; }
     }
 }
