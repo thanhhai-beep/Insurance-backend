@@ -5587,23 +5587,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Van Thao\\.nuget\\packages\\": {},
+    "C:\\Users\\TIDI\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Clone\\Insurance-backend\\backend\\backend\\backend.csproj",
+      "projectUniqueName": "D:\\HAI\\react-js\\insurance\\Insurance-backend-API\\backend\\backend\\backend.csproj",
       "projectName": "backend",
-      "projectPath": "D:\\Clone\\Insurance-backend\\backend\\backend\\backend.csproj",
-      "packagesPath": "C:\\Users\\Van Thao\\.nuget\\packages\\",
-      "outputPath": "D:\\Clone\\Insurance-backend\\backend\\backend\\obj\\",
+      "projectPath": "D:\\HAI\\react-js\\insurance\\Insurance-backend-API\\backend\\backend\\backend.csproj",
+      "packagesPath": "C:\\Users\\TIDI\\.nuget\\packages\\",
+      "outputPath": "D:\\HAI\\react-js\\insurance\\Insurance-backend-API\\backend\\backend\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Van Thao\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\TIDI\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5677,7 +5677,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
       }
     }
   }

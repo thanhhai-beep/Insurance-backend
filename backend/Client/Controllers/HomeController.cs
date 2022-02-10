@@ -26,7 +26,11 @@ namespace Client.Controllers
         {
             return View();
         }
-        public IActionResult HomePages()
+        public IActionResult HomePage()
+        {
+            return View();
+        }
+        public IActionResult Dashboard()
         {
             return View();
         }

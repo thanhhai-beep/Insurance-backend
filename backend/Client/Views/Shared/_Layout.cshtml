@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="zxx">
 
 <head>
@@ -217,7 +218,7 @@
             <div class="row grid pt-sm-5">
                 <div class="col-lg-3 col-6">
                     <figure class="effect-layla">
-                        <img src="~/images/p1.jpg" alt="img" class="img-fluid" />
+                        <img src="~/images/HomePages/p1.jpg" alt="img" class="img-fluid" />
                         <figcaption>
                             <h4>loyalty</h4>
                             <p>Cras ultricies convallis at tellus ivamus suscipit tortor eget felis.</p>
@@ -226,7 +227,7 @@
                 </div>
                 <div class="col-lg-3 col-6">
                     <figure class="effect-layla">
-                        <img src="~/images/p2.jpg" alt="img" class="img-fluid" />
+                        <img src="~/images/HomePages/p2.jpg" alt="img" class="img-fluid" />
                         <figcaption>
                             <h4>trustworthiness</h4>
                             <p>Cras ultricies convallis at tellus ivamus suscipit tortor eget felis.</p>
@@ -236,7 +237,7 @@
 
                 <div class="col-lg-3 col-6">
                     <figure class="effect-layla">
-                        <img src="~/images/p3.jpg" alt="img" class="img-fluid" />
+                        <img src="~/images/HomePages/p3.jpg" alt="img" class="img-fluid" />
                         <figcaption>
                             <h4>professionals</h4>
                             <p>Cras ultricies convallis at tellus ivamus suscipit tortor eget felis.</p>
@@ -245,7 +246,7 @@
                 </div>
                 <div class="col-lg-3 col-6">
                     <figure class="effect-layla">
-                        <img src="~/images/p4.jpg" alt="img" class="img-fluid" />
+                        <img src="~/images/HomePages/p4.jpg" alt="img" class="img-fluid" />
                         <figcaption>
                             <h4>any insurance</h4>
                             <p>Cras ultricies convallis at tellus ivamus suscipit tortor eget felis.</p>
@@ -339,7 +340,7 @@
                                 </p>
                             </div>
                             <div class="testi-pos">
-                                <img src="~/images/ts1.jpg" alt="" class="img-fluid rounded-circle mb-3" />
+                                <img src="~/images/HomePages/ts1.jpg" alt="" class="img-fluid rounded-circle mb-3" />
                                 <h4>arim john</h4>
                                 <span>congue leo</span>
                             </div>
@@ -359,7 +360,7 @@
                                 </p>
                             </div>
                             <div class="testi-pos">
-                                <img src="~/images/ts2.jpg" alt="" class="img-fluid rounded-circle mb-3" />
+                                <img src="~/images/HomePages/ts2.jpg" alt="" class="img-fluid rounded-circle mb-3" />
                                 <h4>john arim</h4>
                                 <span>lacinia eget</span>
                             </div>
@@ -379,7 +380,7 @@
                                 </p>
                             </div>
                             <div class="testi-pos">
-                                <img src="~/images/ts3.jpg" alt="" class="img-fluid rounded-circle mb-3" />
+                                <img src="~/images/HomePages/ts3.jpg" alt="" class="img-fluid rounded-circle mb-3" />
                                 <h4>john arim</h4>
                                 <span>Donec rutru</span>
                             </div>
@@ -604,39 +605,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form action="#" method="post" class="p-3">
-                        <div class="form-group">
-                            <label for="recipient-name" class="col-form-label">Username</label>
-                            <input type="text" class="form-control" placeholder=" " name="Name" id="recipient-name"
-                                   required="">
-                        </div>
-                        <div class="form-group">
-                            <label for="password" class="col-form-label">Password</label>
-                            <input type="password" class="form-control" placeholder=" " name="Password" id="password"
-                                   required="">
-                        </div>
-                        <div class="right-w3l">
-                            <input type="submit" class="form-control" value="Login">
-                        </div>
-                        <div class="row sub-w3l my-3">
-                            <div class="col sub-agile">
-                                <input type="checkbox" id="brand1" value="">
-                                <label for="brand1" class="text-white">
-                                    <span></span>Remember me?
-                                </label>
-                            </div>
-                            <div class="col forgot-w3l text-right">
-                                <a href="#" class="text-white">Forgot Password?</a>
-                            </div>
-                        </div>
-                        <p class="text-center dont-do text-white">
-                            Don't have an account?
-                            <a href="#" data-toggle="modal" data-target="#exampleModal1" class="text-white">
-                                Register Now
-                            </a>
-
-                        </p>
-                    </form>
+                    <partial name="~/Views/Login/Login.cshtml" />
                 </div>
             </div>
         </div>

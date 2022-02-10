@@ -2,8 +2,12 @@
   "ExpandedNodes": [
     "",
     "\\backend",
-    "\\backend\\backend"
+    "\\backend\\backend",
+    "\\backend\\Client",
+    "\\backend\\Client\\Controllers",
+    "\\backend\\Client\\Views",
+    "\\backend\\Client\\Views\\Login"
   ],
-  "SelectedNode": "\\backend\\backend\\Startup.cs",
+  "SelectedNode": "\\backend\\Client\\Views\\Login\\Login.cshtml",
   "PreviewInSolutionExplorer": false
 }
