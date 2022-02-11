@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
-namespace Client.Models
+namespace backend.Models
 {
-    public partial class CompanyDetail
+    public partial class CompanyDetails
     {
+        [Key]
         public int Id { get; set; }
         public string CompanyName { get; set; }
         public string Address { get; set; }

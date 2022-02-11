@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
-namespace Client.Models
+namespace backend.Models
 {
     public partial class UserLogin
     {
