@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 #nullable disable
 
-namespace backend.Models
+namespace Client.Models
 {
     public partial class Policy
     {

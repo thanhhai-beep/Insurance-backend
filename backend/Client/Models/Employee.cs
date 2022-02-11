@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
-namespace backend.Models
+namespace Client.Models
 {
     public partial class Employee
     {

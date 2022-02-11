@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Metadata;
 
 #nullable disable
 
-namespace backend.Models
+namespace Client.Models
 {
     public partial class InsuranceDBContext : DbContext
     {
