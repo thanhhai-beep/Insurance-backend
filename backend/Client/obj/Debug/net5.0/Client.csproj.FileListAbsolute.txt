@@ -596,3 +596,6 @@ D:\Clone\Insurance-backend\backend\Client\bin\Debug\net5.0\Microsoft.Extensions.
 D:\Clone\Insurance-backend\backend\Client\bin\Debug\net5.0\PagedList.Core.dll
 D:\Clone\Insurance-backend\backend\Client\bin\Debug\net5.0\PagedList.Core.Mvc.dll
 D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Client.MvcApplicationPartsAssemblyInfo.cs
+D:\Clone\Insurance-backend\backend\Client\bin\Debug\net5.0\Client.StaticWebAssets.xml
+D:\Clone\Insurance-backend\backend\Client\bin\Debug\net5.0\AspNetCoreHero.ToastNotification.Views.dll
+D:\Clone\Insurance-backend\backend\Client\bin\Debug\net5.0\AspNetCoreHero.ToastNotification.dll

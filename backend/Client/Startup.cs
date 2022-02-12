@@ -1,3 +1,4 @@
+using AspNetCoreHero.ToastNotification;
 using Client.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,8 @@ namespace Client
             services.AddSession();
             services.AddDbContext<InsuranceDBContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("Db")));
+            //_____Notify____ 
+            services.AddNotyf(config => { config.DurationInSeconds = 10; config.IsDismissable = true; config.Position = NotyfPosition.BottomRight; });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
