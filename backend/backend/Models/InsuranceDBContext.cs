@@ -17,20 +17,20 @@ namespace backend.Models
         {
         }
 
-        public virtual DbSet<CompanyDetail> CompanyDetails { get; set; }
+        public virtual DbSet<CompanyDetails> CompanyDetails { get; set; }
         public virtual DbSet<HospitalInfo> HospitalInfos { get; set; }
-        public virtual DbSet<Policiesonemployee> Policiesonemployees { get; set; }
-        public virtual DbSet<Policy> Policies { get; set; }
-        public virtual DbSet<PolicyApprovalDetail> PolicyApprovalDetails { get; set; }
-        public virtual DbSet<PolicyRequestDetail> PolicyRequestDetails { get; set; }
-        public virtual DbSet<PolicyTotalDescription> PolicyTotalDescriptions { get; set; }
+        public virtual DbSet<Employee> Employee { get; set; }
+        public virtual DbSet<Policy> Policy { get; set; }
+        public virtual DbSet<PolicyApprovalDetails> PolicyApprovalDetails { get; set; }
+        public virtual DbSet<PolicyRequestDetails> PolicyRequestDetails { get; set; }
+        public virtual DbSet<PolicyTotalDescriptions> PolicyTotalDescriptions { get; set; }
         public virtual DbSet<UserLogin> UserLogins { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("server=DESKTOP-MDNKSPU\\TIDISQL; database =InsuranceDB; uid=sa;pwd=1234");
+                optionsBuilder.UseSqlServer(@"server=DESKTOP-RP9BI5I\SQLEXPRESS01; database=InsuranceDB; uid=sa;pwd=123");
             }
         }
 
@@ -38,7 +38,7 @@ namespace backend.Models
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
-            modelBuilder.Entity<CompanyDetail>(entity =>
+            modelBuilder.Entity<CompanyDetails>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
@@ -61,6 +61,7 @@ namespace backend.Models
                     .IsUnicode(false);
             });
 
+
             modelBuilder.Entity<HospitalInfo>(entity =>
             {
                 entity.ToTable("HospitalInfo");
@@ -69,7 +70,7 @@ namespace backend.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Locationn)
+                entity.Property(e => e.Address)
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
@@ -82,7 +83,7 @@ namespace backend.Models
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<Policiesonemployee>(entity =>
+            modelBuilder.Entity<Employee>(entity =>
             {
                 entity.HasKey(e => e.EmpId)
                     .HasName("PK__policies__AFB3EC0D5F9171FC");
@@ -106,28 +107,14 @@ namespace backend.Models
                     .IsUnicode(false)
                     .HasColumnName("company_name");
 
-                entity.Property(e => e.Emi)
-                    .HasColumnType("decimal(7, 2)")
-                    .HasColumnName("emi");
-
-                entity.Property(e => e.Enddate)
+                entity.Property(e => e.EndDate)
                     .HasColumnType("datetime")
                     .HasColumnName("enddate");
 
-                entity.Property(e => e.Medical)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("medical");
-
                 entity.Property(e => e.PolicyId).HasColumnName("policy_id");
 
-                entity.Property(e => e.Policyamount)
-                    .HasColumnType("money")
-                    .HasColumnName("policyamount");
-
                 entity.Property(e => e.Policyduration)
-                    .HasColumnType("decimal(7, 2)")
+                    .HasColumnType("decimal(7,2)")
                     .HasColumnName("policyduration");
 
                 entity.Property(e => e.Policyname)
@@ -136,12 +123,12 @@ namespace backend.Models
                     .IsUnicode(false)
                     .HasColumnName("policyname");
 
-                entity.Property(e => e.Tartdate)
+                entity.Property(e => e.Startdate)
                     .HasColumnType("datetime")
                     .HasColumnName("tartdate");
 
                 entity.HasOne(d => d.Policy)
-                    .WithMany(p => p.Policiesonemployees)
+                    .WithMany(p => p.Employee)
                     .HasForeignKey(d => d.PolicyId)
                     .OnDelete(DeleteBehavior.ClientSetNull)
                     .HasConstraintName("FK__policieso__polic__4E88ABD4");
@@ -153,18 +140,7 @@ namespace backend.Models
 
                 entity.Property(e => e.Id).HasColumnName("id");
 
-                entity.Property(e => e.Amount)
-                    .HasColumnType("money")
-                    .HasColumnName("amount");
-
                 entity.Property(e => e.Companyid).HasColumnName("companyid");
-
-                entity.Property(e => e.Emi).HasColumnType("money");
-
-                entity.Property(e => e.Medicalid)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("medicalid");
 
                 entity.Property(e => e.Policydesc)
                     .HasMaxLength(150)
@@ -177,31 +153,19 @@ namespace backend.Models
                     .HasColumnName("policyname");
             });
 
-            modelBuilder.Entity<PolicyApprovalDetail>(entity =>
+            modelBuilder.Entity<PolicyApprovalDetails>(entity =>
             {
-                entity.Property(e => e.Amount).HasColumnType("money");
-
-                entity.Property(e => e.Date).HasColumnType("datetime");
-
-                entity.Property(e => e.Reason)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
                 entity.Property(e => e.Status)
                     .HasMaxLength(3)
                     .IsUnicode(false)
                     .IsFixedLength(true);
             });
 
-            modelBuilder.Entity<PolicyRequestDetail>(entity =>
+            modelBuilder.Entity<PolicyRequestDetails>(entity =>
             {
                 entity.Property(e => e.Companyname)
                     .HasMaxLength(50)
                     .IsUnicode(false);
-
-                entity.Property(e => e.Emi).HasColumnType("money");
-
-                entity.Property(e => e.PolicyAmount).HasColumnType("money");
 
                 entity.Property(e => e.Policyname)
                     .HasMaxLength(50)
@@ -215,7 +179,7 @@ namespace backend.Models
                     .IsUnicode(false);
             });
 
-            modelBuilder.Entity<PolicyTotalDescription>(entity =>
+            modelBuilder.Entity<PolicyTotalDescriptions>(entity =>
             {
                 entity.ToTable("PolicyTotalDescription");
 
@@ -223,20 +187,7 @@ namespace backend.Models
                     .HasMaxLength(50)
                     .IsUnicode(false);
 
-                entity.Property(e => e.Emi)
-                    .HasColumnType("money")
-                    .HasColumnName("EMI");
-
-                entity.Property(e => e.Medicalid)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("medicalid");
-
-                entity.Property(e => e.Policyamount)
-                    .HasColumnType("money")
-                    .HasColumnName("policyamount");
-
-                entity.Property(e => e.Policydes)
+                entity.Property(e => e.PolicyDesc)
                     .HasMaxLength(250)
                     .IsUnicode(false)
                     .HasColumnName("policydes");
