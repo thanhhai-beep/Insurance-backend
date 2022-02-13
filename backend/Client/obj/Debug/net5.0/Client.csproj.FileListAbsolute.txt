@@ -599,3 +599,15 @@ D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Client.MvcApplication
 D:\Clone\Insurance-backend\backend\Client\bin\Debug\net5.0\Client.StaticWebAssets.xml
 D:\Clone\Insurance-backend\backend\Client\bin\Debug\net5.0\AspNetCoreHero.ToastNotification.Views.dll
 D:\Clone\Insurance-backend\backend\Client\bin\Debug\net5.0\AspNetCoreHero.ToastNotification.dll
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Areas\Client\Views\Shared\ClientLayout.cshtml.g.cs
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Areas\Client\Views\Shared\Error.cshtml.g.cs
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Areas\Client\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Areas\Client\Views\_ViewImports.cshtml.g.cs
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Areas\Client\Views\_ViewStart.cshtml.g.cs
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Areas\Client\Views\Home\Index.cshtml.g.cs
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Areas\Employee\Views\Shared\EmployeeLayout.cshtml.g.cs
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Areas\Employee\Views\Shared\Error.cshtml.g.cs
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Areas\Employee\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Areas\Employee\Views\_ViewImports.cshtml.g.cs
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Areas\Employee\Views\_ViewStart.cshtml.g.cs
+D:\Clone\Insurance-backend\backend\Client\obj\Debug\net5.0\Razor\Areas\Employee\Views\Home\Index.cshtml.g.cs
