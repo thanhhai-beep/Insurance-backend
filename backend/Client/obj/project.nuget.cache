@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "dlMEr285Ms2NV3fwTuhgffEJpBD3uAfoMfJxfzAvNdkXW3UZDJLq9ZAby6Bws3UGmdp0wJzcjVy/lrwrPSsUVw==",
+  "dgSpecHash": "3iHoRgp/N7PZOZlzV470laEHObK19RKbpHoM6tUVD0IQEuA2glOQNcrswZVgUWS+X7KNcbLWj14nKgPZ9D5EIQ==",
   "success": true,
   "projectFilePath": "D:\\Clone\\Insurance-backend\\backend\\Client\\Client.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\Van Thao\\.nuget\\packages\\aspnetcorehero.toastnotification\\1.1.0\\aspnetcorehero.toastnotification.1.1.0.nupkg.sha512",
     "C:\\Users\\Van Thao\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\Van Thao\\.nuget\\packages\\microsoft.aspnet.mvc\\5.2.7\\microsoft.aspnet.mvc.5.2.7.nupkg.sha512",
     "C:\\Users\\Van Thao\\.nuget\\packages\\microsoft.aspnet.razor\\3.2.7\\microsoft.aspnet.razor.3.2.7.nupkg.sha512",
@@ -60,7 +61,7 @@
     "C:\\Users\\Van Thao\\.nuget\\packages\\microsoft.web.infrastructure\\1.0.0\\microsoft.web.infrastructure.1.0.0.nupkg.sha512",
     "C:\\Users\\Van Thao\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\Van Thao\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
-    "C:\\Users\\Van Thao\\.nuget\\packages\\newtonsoft.json\\11.0.2\\newtonsoft.json.11.0.2.nupkg.sha512",
+    "C:\\Users\\Van Thao\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Users\\Van Thao\\.nuget\\packages\\pagedlist.core\\1.17.4\\pagedlist.core.1.17.4.nupkg.sha512",
     "C:\\Users\\Van Thao\\.nuget\\packages\\pagedlist.core.mvc\\3.0.0\\pagedlist.core.mvc.3.0.0.nupkg.sha512",
     "C:\\Users\\Van Thao\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
