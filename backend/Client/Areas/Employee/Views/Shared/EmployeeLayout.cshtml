@@ -8,6 +8,8 @@
     <meta charset="utf-8" />
     <meta name="keywords" content="Insurance Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
 	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    
+    
     <script>
         addEventListener("load", function () {
             setTimeout(hideURLbar, 0);
@@ -40,7 +42,7 @@
         <header>
             <nav class="navbar navbar-expand-lg navbar-light bg-gradient-secondary">
                 <h1>
-                    <a class="navbar-brand text-white" href="index.html">
+                    <a class="navbar-brand text-white"href="@Url.Action("Index","Home")">
                         Insurance
                     </a>
                 </h1>
@@ -51,10 +53,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-lg-auto text-center">
                         <li class="nav-item active  mr-lg-3 mt-lg-0 mt-3">
-                            <a class="nav-link" href="index.html">
-                                Home
-                                <span class="sr-only">(current)</span>
-                            </a>
+                           
                         </li>
                         <li class="nav-item  mr-lg-3 mt-lg-0 mt-3">
                             <a class="nav-link scroll" href="#search">Search</a>
@@ -65,12 +64,12 @@
                                 Details
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item scroll" href="#work">Employee Details</a>
+                                <a class="dropdown-item scroll" href="#update">Employee Details</a>
                                 <a class="dropdown-item scroll" href="#testi">Policy Details</a>
                             </div>
                         </li>
                         <li class="nav-item mr-lg-3 mt-lg-0 mt-3">
-                            <a class="nav-link scroll" href="#contact">Order For Insurances</a>
+                            <a class="nav-link scroll" href="#order">Order For Insurances</a>
                         </li>
 
                         <li class="nav-item mr-lg-3 mt-lg-0 mt-3">
@@ -99,275 +98,45 @@
     </div>
     <!-- //banner -->
     <!-- about -->
-    <div class="about-w3sec py-sm-5" id="search">
+    @*<div class="about-w3sec py-sm-5" id="search">
+        <div class="container py-5">*@
+    <div class="testimonials py-lg-5" style="background-color: #30DCF2 " id="about">
         <div class="container py-5">
             <div class="title-section pb-4">
                 <h3 class="main-title-agile">Insurance Directory</h3>
-                < class="col-md-12">
-                    <!-- ô search-->                   
-                 <div class="form-group">
-                    <div class="row" style="margin-right: 100px;">                                
-                        <input class="col-md-6" type="text" placeholder="Search" name="search"
-                                required="">
-                        <div class="col-md-6 mt-md-0 mt-4">
-                            <input type="submit" value="" class="searchbutton btn btn-default">
-                        </div>                                
-                    </div>
-                </div>                      
+                <div class="col=md-8">
+                   
+                </div>
             </div>
             <div class="ins-sec1">
-                <div class="row mt-lg-5">
-                <div class="col-lg-8 mx-auto mt-5">
-                    <div class="row">
-                        <div class="col-lg-6 my-lg-0 my-md-5">
-                            <div class="abt-block">
-                                <div class="serv_abs  serv_bottom">
-                                    <i class="fas fa-hand-holding-heart"></i>
-                                </div>
-                                <h3>health insurance</h3>
-                                <p>
-                                    Donec rutrum congue leo eget malesuada. Cras ultricies ligula sed magna dictum
-                                    porta.
-                                </p>
-                            </div>
-                        </div>
+                <div class="row">
 
+                    <div class="col-lg-4 my-lg-0 my-md-5">
+                        <div class="abt-block">
+                            <div class="serv_abs serv_bottom">
+                                <i class="fas fa-hand-holding-heart"></i>
+                            </div>
+                            <h3>vehicle insurance</h3>
+                            <p>Health insurance for you and your family</p>
+                        </div>
                     </div>
+
                 </div>
+
             </div>
         </div>
     </div>
-</div>
     <!-- //about -->
-    <!-- stats -->
-    <section class="agile_stats py-sm-5" id="more">
-        <div class="container">
-            <div class="py-lg-5 w3-abbottom">
-                <div class="row py-5">
-                    <div class="counter col-lg-3 col-6">
-                        <i class="far fa-smile"></i>
-                        <div class="timer count-title count-number mt-2 text-white" data-to="5100" data-speed="1500"></div>
-                        <p class="count-text text-capitalize text-white">happy clients</p>
-                    </div>
+    <!--___Update___-->
 
-                    <div class="counter col-lg-3 col-6">
-                        <i class="fas fa-database"></i>
-                        <div class="timer count-title count-number mt-2 text-white" data-to="971" data-speed="1500"></div>
-                        <p class="count-text text-capitalize text-white">insurance projects</p>
-                    </div>
-                    <div class="counter col-lg-3 col-6 mt-lg-0 mt-4">
-                        <i class="fas fa-users"></i>
-                        <div class="timer count-title count-number mt-2 text-white" data-to="21" data-speed="1500"></div>
-                        <p class="count-text text-capitalize text-white">professional agents</p>
-                    </div>
-                    <div class="counter col-lg-3 col-6 mt-lg-0 mt-4">
-                        <i class="fas fa-award"></i>
-                        <div class="timer count-title count-number mt-2 text-white" data-to="27" data-speed="1500"></div>
-                        <p class="count-text text-capitalize text-white">years of experience</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- //stats -->
-    <!-- services -->
-    <div class="more-services py-lg-5">
-        <div class="container pt-sm-5">
-            <div class="title-section py-4">
-                <h3 class="main-title-agile">personal and commercial insurance</h3>
-                <span class="title-line">
-                </span>
-            </div>
-            <div class="row grid pt-sm-5">
-                <div class="col-lg-3 col-6">
-                    <figure class="effect-layla">
-                        <img src="~/images/HomePages/p1.jpg" alt="img" class="img-fluid" />
-                        <figcaption>
-                            <h4>loyalty</h4>
-                            <p>Cras ultricies convallis at tellus ivamus suscipit tortor eget felis.</p>
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <figure class="effect-layla">
-                        <img src="~/images/HomePages/p2.jpg" alt="img" class="img-fluid" />
-                        <figcaption>
-                            <h4>trustworthiness</h4>
-                            <p>Cras ultricies convallis at tellus ivamus suscipit tortor eget felis.</p>
-                        </figcaption>
-                    </figure>
-                </div>
-
-                <div class="col-lg-3 col-6">
-                    <figure class="effect-layla">
-                        <img src="~/images/HomePages/p3.jpg" alt="img" class="img-fluid" />
-                        <figcaption>
-                            <h4>professionals</h4>
-                            <p>Cras ultricies convallis at tellus ivamus suscipit tortor eget felis.</p>
-                        </figcaption>
-                    </figure>
-                </div>
-                <div class="col-lg-3 col-6">
-                    <figure class="effect-layla">
-                        <img src="~/images/HomePages/p4.jpg" alt="img" class="img-fluid" />
-                        <figcaption>
-                            <h4>any insurance</h4>
-                            <p>Cras ultricies convallis at tellus ivamus suscipit tortor eget felis.</p>
-                        </figcaption>
-                    </figure>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- //services -->
-    <!-- how it works -->
-    <div class="agile-works py-5" id="work">
-        <div class="container py-lg-5">
-            <div class="title-section pb-4">
-                <h3 class="main-title-agile">how it works?</h3>
-                <span class="title-line">
-                </span>
-            </div>
-            <div class="row py-md-5 pt-5">
-                <div class="col-md-12">
-                    <div class="main-timeline2">
-                        <div class="timeline">
-                            <span class="icon fa fa-globe"></span>
-                            <a href="#" class="timeline-content">
-                                <h3 class="title">heading goes here</h3>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada tellus
-                                    lorem, et condimentum neque commodo quis.
-                                </p>
-                            </a>
-                        </div>
-                        <div class="timeline">
-                            <span class="icon fa fa-rocket"></span>
-                            <a href="#" class="timeline-content">
-                                <h3 class="title">heading goes here</h3>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada tellus
-                                    lorem, et condimentum neque commodo quis.
-                                </p>
-                            </a>
-                        </div>
-                        <div class="timeline">
-                            <span class="icon fa fa-briefcase"></span>
-                            <a href="#" class="timeline-content">
-                                <h3 class="title">heading goes here</h3>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada tellus
-                                    lorem, et condimentum neque commodo quis.
-                                </p>
-                            </a>
-                        </div>
-                        <div class="timeline">
-                            <span class="icon fa fa-mobile"></span>
-                            <a href="#" class="timeline-content">
-                                <h3 class="title">heading goes here</h3>
-                                <p class="description">
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer malesuada tellus
-                                    lorem, et condimentum neque commodo quis.
-                                </p>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- //how it works -->
-    <!-- testimonials -->
-    <div class="testimonials py-lg-5" id="testi">
-        <div class="container py-5">
-            <div class="title-section pb-4">
-                <h3 class="main-title-agile text-white">what people say about us.</h3>
-                <span class="title-line bg-light">
-                </span>
-            </div>
-            <div class="text-center py-lg-5">
-                <div class="callbacks_container">
-                    <ul class="rslides" id="slider3">
-                        <li>
-                            <div class="testi-agile">
-                                <p>
-                                    <i class="fas fa-quote-left"></i>Vivamus magna justo, lacinia eget consectetur
-                                    sed,
-                                    convallis at tellus. Nulla
-                                    quis lorem ut libero malesuada feugiat.Nulla quis lorem ut libero malesuada
-                                    feugiat.
-                                    Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing
-                                    elit.
-                                    <i class="fas fa-quote-right"></i>
-                                </p>
-                            </div>
-                            <div class="testi-pos">
-                                <img src="~/images/HomePages/ts1.jpg" alt="" class="img-fluid rounded-circle mb-3" />
-                                <h4>arim john</h4>
-                                <span>congue leo</span>
-                            </div>
-                        </li>
-                        <li>
-
-                            <div class="testi-agile">
-                                <p>
-                                    <i class="fas fa-quote-left"></i>Donec rutrum congue leo eget consectetur sed,
-                                    convallis at tellus. Nulla quis
-                                    lorem ut libero malesuada feugiat.Nulla quis lorem ut libero malesuada feugiat.
-                                    Donec
-                                    rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing
-                                    elit
-                                    <i class="fas fa-quote-right"></i>
-                                </p>
-                            </div>
-                            <div class="testi-pos">
-                                <img src="~/images/HomePages/ts2.jpg" alt="" class="img-fluid rounded-circle mb-3" />
-                                <h4>john arim</h4>
-                                <span>lacinia eget</span>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="testi-agile">
-                                <p>
-                                    <i class="fas fa-quote-left"></i>Vivamus magna justo, lacinia eget consectetur
-                                    sed,
-                                    convallis at tellus. Nulla
-                                    quis lorem ut libero malesuada feugiat.Nulla quis lorem ut libero malesuada
-                                    feugiat.
-                                    Donec rutrum congue leo eget malesuada. Lorem ipsum dolor sit amet, consectetur
-                                    adipiscing
-                                    elit
-                                    <i class="fas fa-quote-right"></i>
-                                </p>
-                            </div>
-                            <div class="testi-pos">
-                                <img src="~/images/HomePages/ts3.jpg" alt="" class="img-fluid rounded-circle mb-3" />
-                                <h4>john arim</h4>
-                                <span>Donec rutru</span>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- //testimonials -->
-
-
-
-
-
-
-    <div class="contact-wthree" id="contact">
+    <div class="contact-wthree" id="update">
         <div class="container py-sm-5">
             <div class="title-section py-4">
                 <h3 class="main-title-agile">Update Employee Details</h3>
                 <span class="title-line">
                 </span>
             </div>
-            <div class="row py-lg-5 py-4">              
+            <div class="row py-lg-5 py-4">
                 <div class="offset-2"></div>
                 <div class="col-lg-12 mt-lg-0 mt-5">
                     <!-- register form grid -->
@@ -415,7 +184,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <label>
-                                           Contact No.
+                                            Contact No.
                                         </label>
                                         <input class="form-control" type="number" placeholder="No." name="Contact"
                                                required="">
@@ -465,7 +234,7 @@
                             </div>
                             <div class="row mt-3">
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-agile btn-block w-100 font-weight-bold text-uppercase">Send</button>
+                                    <button type="submit" class="btn btn-agile btn-block w-100 font-weight-bold text-uppercase">Update</button>
                                 </div>
                             </div>
                         </form>
@@ -476,16 +245,42 @@
         </div>
     </div>
 
+    <!--//___Update___-->
+    <!-- stats -->
+    <section class="agile_stats py-sm-5" id="more">
+        <div class="container">
+            <div class="py-lg-5 w3-abbottom">
+                <div class="row py-5">
+                    <div class="counter col-lg-3 col-6">
+                        <i class="far fa-smile"></i>
+                        <div class="timer count-title count-number mt-2 text-white" data-to="5100" data-speed="1500"></div>
+                        <p class="count-text text-capitalize text-white">happy clients</p>
+                    </div>
 
-
-
-
-
-
-
-
+                    <div class="counter col-lg-3 col-6">
+                        <i class="fas fa-database"></i>
+                        <div class="timer count-title count-number mt-2 text-white" data-to="971" data-speed="1500"></div>
+                        <p class="count-text text-capitalize text-white">insurance projects</p>
+                    </div>
+                    <div class="counter col-lg-3 col-6 mt-lg-0 mt-4">
+                        <i class="fas fa-users"></i>
+                        <div class="timer count-title count-number mt-2 text-white" data-to="21" data-speed="1500"></div>
+                        <p class="count-text text-capitalize text-white">professional agents</p>
+                    </div>
+                    <div class="counter col-lg-3 col-6 mt-lg-0 mt-4">
+                        <i class="fas fa-award"></i>
+                        <div class="timer count-title count-number mt-2 text-white" data-to="27" data-speed="1500"></div>
+                        <p class="count-text text-capitalize text-white">years of experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- //stats -->
+    <!-- how it works -->
+    <!-- //how it works -->
     <!-- contact -->
-    <div class="contact-wthree" id="contact">
+    <div class="contact-wthree" id="order">
         <div class="container py-sm-5">
             <div class="title-section py-4">
                 <h3 class="main-title-agile">Order </h3>
@@ -516,22 +311,6 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label>
-                                            Policy Amount
-                                        </label>
-                                        <input class="form-control" type="number" name="email"
-                                               required="">
-                                    </div>
-                                    <div class="col-md-6 mt-md-0 mt-4">
-                                        <label>
-                                            EMI
-                                        </label>
-                                        <input class="form-control" type="number" placeholder="EMI" name="emi"
-                                               required="">
-                                    </div>
-                                </div>
 
                                 <div class="row">
                                     <div class="col-md-6">
@@ -552,16 +331,16 @@
                                         <label>
                                             Company Id
                                         </label>
-                                        <input class="form-control" type="number" placeholder="Company id"  name="Co-id"
+                                        <input class="form-control" type="number" placeholder="Company id" name="Co-id"
                                                required="">
                                     </div>
                                 </div>
 
                             </div>
-                            
+
                             <div class="row mt-3">
                                 <div class="col-md-12">
-                                    <button type="submit" class="btn btn-agile btn-block w-100 font-weight-bold text-uppercase">Send</button>
+                                    <button type="submit" class="btn btn-agile btn-block w-100 font-weight-bold text-uppercase">ADD</button>
                                 </div>
                             </div>
                         </form>
@@ -581,32 +360,16 @@
                         <h2>
                             <a href="index.html">Insurance</a>
                         </h2>
-                        <p class="text-white">
-                            Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum
-                            has
-                            been
-                            the
-                            industry's standard.
-                        </p>
+
                         <div class="footerv4-social">
                             <h3>stay connected</h3>
                             <ul>
                                 <li>
-                                    <a href="#">
+                                    <a href="https://www.facebook.com/IPoxxx.x">
                                         <span class="fab fa-facebook-f icon_facebook"></span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="fab fa-twitter icon_twitter"></span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <span class="fab fa-dribbble icon_dribbble"></span>
-                                    </a>
-                                </li>
+
                                 <li>
                                     <a href="#">
                                         <span class="fab fa-google-plus icon_g_plus"></span>
@@ -624,14 +387,13 @@
                                 <a href="index.html">Home</a>
                             </li>
                             <li>
+                                <a href="#insurance" class="scroll">Insurance</a>
+                            </li>
+                            <li>
                                 <a href="#about" class="scroll">About Us</a>
                             </li>
-                            <li>
-                                <a href="#work" class="scroll">work</a>
-                            </li>
-                            <li>
-                                <a href="#testi" class="scroll">testimonials</a>
-                            </li>
+
+
                             <li>
                                 <a href="#contact" class="scroll">contact</a>
                             </li>
@@ -642,30 +404,27 @@
                         <ul class="v4-rel">
                             <li>
                                 <a href="#">
-                                    Lorem ipsum dolor sit amet.Cras rutrum iaculis enim, non mattis.
                                 </a>
-                                <p class="text-white">February 15, 2018</p>
+                                <p class="text-white">February 5, 2022</p>
                             </li>
                             <li>
                                 <a href="#">
-                                    Lorem ipsum dolor sit amet.Cras rutrum iaculis enim, non mattis.
                                 </a>
-                                <p class="text-white">February 18, 2018</p>
+                                <p class="text-white">February 10, 2022</p>
                             </li>
                             <li>
                                 <a href="#">
-                                    Lorem ipsum dolor sit amet.Cras rutrum iaculis enim, non mattis.
                                 </a>
-                                <p class="text-white">February 20, 2018</p>
+                                <p class="text-white">February 20, 2022</p>
                             </li>
                         </ul>
                     </div>
                     <div class="col-lg-3 footv4-left">
-                        <h3>newsletter</h3>
+                        <h3>Report</h3>
                         <form action="#" method="post">
                             <input type="text" placeholder="Your name" name="name" required>
-                            <input type="email" placeholder="Your Email" name="email" required>
-                            <input type="submit" value="Submit">
+                            <input type="text" placeholder="Your Report" name="report" required>
+                            <input type="submit" value="Send">
                         </form>
                     </div>
                 </div>
