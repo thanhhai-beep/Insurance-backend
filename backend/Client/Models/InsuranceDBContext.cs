@@ -17,7 +17,7 @@ namespace Client.Models
         {
         }
 
-        public virtual DbSet<CompanyDetails> CompanyDetails { get; set; }
+        public virtual DbSet<CompanyDetail> CompanyDetails { get; set; }
         public virtual DbSet<HospitalInfo> HospitalInfos { get; set; }
         public virtual DbSet<Employee> Employee { get; set; }
         public virtual DbSet<Policy> Policy { get; set; }
@@ -38,7 +38,7 @@ namespace Client.Models
         {
             modelBuilder.HasAnnotation("Relational:Collation", "SQL_Latin1_General_CP1_CI_AS");
 
-            modelBuilder.Entity<CompanyDetails>(entity =>
+            modelBuilder.Entity<CompanyDetail>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
 
