@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -8,7 +7,6 @@ namespace backend.Models
 {
     public partial class RequestDetail
     {
-        [Key]
         public int Id { get; set; }
         public DateTime? RequestDate { get; set; }
         public int? EmpId { get; set; }
