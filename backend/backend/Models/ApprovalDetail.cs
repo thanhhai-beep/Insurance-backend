@@ -6,13 +6,16 @@ using System.ComponentModel.DataAnnotations;
 
 namespace backend.Models
 {
-    public partial class PolicyApprovalDetails
+    public partial class ApprovalDetail
     {
         [Key]
         public int Id { get; set; }
+        public int? EmpId { get; set; }
         public int? RequestId { get; set; }
-        [DisplayFormat(DataFormatString = "{yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? Date { get; set; }
-        public string Status { get; set; }
+        public bool Status { get; set; }
+        public string Reason { get; set; }
+
+        public virtual Employee Emp { get; set; }
     }
 }

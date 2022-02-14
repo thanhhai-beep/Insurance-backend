@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
-namespace backend.Models
+namespace Client.Models
 {
-    public partial class CompanyDetails
+    public partial class CompanyDetail
     {
         [Key]
         public int Id { get; set; }
