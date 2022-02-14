@@ -9,14 +9,19 @@ namespace backend.Models
     {
         public Policy()
         {
-            Employee = new HashSet<Employee>();
+            Employees = new HashSet<Employee>();
+            RequestDetails = new HashSet<RequestDetail>();
+            TotalDescriptions = new HashSet<TotalDescription>();
         }
 
         public int Id { get; set; }
-        public string Policyname { get; set; }
-        public string Policydesc { get; set; }
-        public int? Companyid { get; set; }
+        public string PolicyName { get; set; }
+        public string PolicyDesc { get; set; }
+        public int? CompanyId { get; set; }
 
-        public virtual ICollection<Employee> Employee { get; set; }
+        public virtual CompanyDetail Company { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<RequestDetail> RequestDetails { get; set; }
+        public virtual ICollection<TotalDescription> TotalDescriptions { get; set; }
     }
 }
