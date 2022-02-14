@@ -13,5 +13,17 @@ namespace Client.Areas.Admin.Controllers
         {
             return View();
         }
+        public IActionResult Dashboard()
+        {
+            return View();
+        }
+        public IActionResult EmpList()
+        {
+            return View();
+        }
+        public IActionResult AddEmp()
+        {
+            return View();
+        }
     }
 }
