@@ -1,5 +1,5 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
 
 #nullable disable
 
@@ -15,7 +15,6 @@ namespace backend.Models
             TotalDescriptions = new HashSet<TotalDescription>();
         }
 
-        [Key]
         public int Id { get; set; }
         public string CompanyName { get; set; }
         public string Address { get; set; }
