@@ -28,14 +28,6 @@ namespace backend.Controllers
             if (login != null)
             {
                 return Ok(true);
-                //if(login.Roles == true)
-                //{
-                //    return Ok("Admin");
-                //}
-                //else
-                //{
-                //    return Ok("Emp");
-                //}
             }
             else
             {

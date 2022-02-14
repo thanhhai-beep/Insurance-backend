@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -14,6 +15,7 @@ namespace backend.Models
             RequestDetails = new HashSet<RequestDetail>();
         }
 
+        [Key]
         public int EmpId { get; set; }
         public string Fname { get; set; }
         public string Lname { get; set; }

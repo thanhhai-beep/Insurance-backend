@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -13,7 +14,7 @@ namespace backend.Models
             RequestDetails = new HashSet<RequestDetail>();
             TotalDescriptions = new HashSet<TotalDescription>();
         }
-
+        [Key]
         public int Id { get; set; }
         public string PolicyName { get; set; }
         public string PolicyDesc { get; set; }
