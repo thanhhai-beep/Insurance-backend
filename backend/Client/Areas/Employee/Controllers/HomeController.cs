@@ -13,5 +13,9 @@ namespace Client.Areas.Employee.Controllers
         {
             return View();
         }
+        public IActionResult category()
+        {
+            return View();
+        }
     }
 }
