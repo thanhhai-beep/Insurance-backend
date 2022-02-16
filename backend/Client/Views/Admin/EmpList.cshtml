@@ -1,0 +1,148 @@
+﻿@model IEnumerable<Client.Models.Employee>
+<partial name="../Shared/_NavbarAdmin.cshtml" />
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Employees</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        @*<li class="breadcrumb-item"><a href="#">Home</a></li>*@
+                        <li class="breadcrumb-item active">
+                            <a class="btn btn-success" asp-controller="Home" asp-action="AddEmp">Add</a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Employees</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th style="width: 10%">
+                                Name
+                            </th>
+                            <th class="text-center">
+                                Phone
+                            </th>
+                            <th style="width: 8%">
+                                Address
+                            </th>
+                            <th style="width: 10%">
+                                Email
+                            </th>
+                            <th>
+                                Startdate
+                            </th>
+                            <th class="text-center">
+                                Enddate
+                            </th>
+                            <th>
+                                PolicyId
+                            </th>
+                            <th class="text-center">
+                                CompanyId
+                            </th>
+                            <th>
+                                Image
+                            </th>
+                            <th>
+                                IsAdmin
+                            </th>
+                            <th style="width: 15%" class="text-center">
+                                Acction
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            @foreach (var item in Model)
+                            {
+                        <tr>
+                            <td class="text-left">
+                                @item.EmpId
+                            </td>
+                            <td class="text-left">
+                                @item.Lname @item.Fname
+                            </td>
+                            <td class="project_progress text-left">
+                                @item.Phone
+                            </td>
+                            <td class="project-state text-left">
+                                @item.Address
+                            </td>
+                            <td class="project-state text-left">
+                                @item.Email
+                            </td>
+                            <td class="project-actions text-left">
+                                @item.Startdate
+                            </td>
+                            <td class="project-actions text-left">
+                                @item.Enddate
+                            </td>
+                            <td class="text-left">
+                                @item.PolicyId
+                            </td>
+                            <td class="project_progress text-left">
+                                @item.CompanyId
+                            </td>
+                            <td class="project-state text-left">
+                                <ul class="list-inline">
+                                    <li class="list-inline-item">
+                                        <img alt="Avatar" class="table-avatar" src="../../dist/img/avatar.png">
+                                    </li>
+                                </ul>
+                            </td>
+                            <td class="project_progress text-left">
+                                @item.IsAdmin
+                            </td>
+                            <td class="project-actions text-left">
+                                <a class="btn btn-primary btn-sm" href="#">
+                                    <i class="fas fa-folder">
+                                    </i>
+                                    View
+                                </a>
+                                <a class="btn btn-info btn-sm" asp-controller="Admin" asp-action="EditEmp">
+                                    <i class="fas fa-pencil-alt">
+                                    </i>
+                                    Edit
+                                </a>
+                                <a class="btn btn-danger btn-sm" href="#">
+                                    <i class="fas fa-trash">
+                                    </i>
+                                    Delete
+                                </a>
+                            </td>
+                        </tr>
+                            }
+                        }
+                        else
+                        {
+                            <h5 style="color:red">Have not Employee</h5>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>

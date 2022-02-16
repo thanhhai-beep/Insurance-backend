@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+
+#nullable disable
+
+namespace backend.Models
+{
+    public partial class HospitalInfo
+    {
+        public int Id { get; set; }
+        public string HospitalName { get; set; }
+        public string Phone { get; set; }
+        public string Address { get; set; }
+        public string Url { get; set; }
+    }
+}

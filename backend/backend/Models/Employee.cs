@@ -1,30 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
+
+#nullable disable
 
 namespace backend.Models
 {
-    public class Employee
+    public partial class Employee
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int empId { get; set; }
-        public string username { get; set; }
-        public string email { get; set; }
-        public string password { get; set; }
-        public string lastName { get; set; }
-        public string firstName { get; set; }
-        public string address { get; set; }
+        public int EmpId { get; set; }
+        public string Fname { get; set; }
+        public string Lname { get; set; }
         public string Phone { get; set; }
-        public int age { get; set; }
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime birthday { get; set; }
-        public float salary { get; set; }
-        public int role { get; set; }
-
+        public string Address { get; set; }
+        public string Email { get; set; }
+        public DateTime Startdate { get; set; }
+        public DateTime Enddate { get; set; }
+        public int? PolicyId { get; set; }
+        public int? CompanyId { get; set; }
+        public string Image { get; set; }
+        public bool? IsAdmin { get; set; }
     }
 }

@@ -1,0 +1,95 @@
+﻿@model IEnumerable<Client.Models.HospitalInfo>
+<partial name="../Shared/_NavbarAdmin.cshtml" />
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1>Hospital</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Hospital</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-striped projects">
+                    <thead>
+                        <tr>
+                            <th>
+                                #
+                            </th>
+                            <th style="width: 10%">
+                                HospitalName
+                            </th>
+                            <th class="text-center">
+                                Phone
+                            </th>
+                            <th style="width: 8%">
+                                Address
+                            </th>
+                            <th style="width: 10%">
+                                Url
+                            </th>
+                            <th style="width: 15%" class="text-center">
+                                Acction
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td class="text-left">
+                                        @item.Id
+                                    </td>
+                                    <td class="text-left">
+                                        @item.Phone
+                                    </td>
+                                    <td class="project_progress text-left">
+                                        @item.Phone
+                                    </td>
+                                    <td class="project-state text-left">
+                                        @item.Address
+                                    </td>
+                                    <td class="project-state text-left">
+                                        @item.Url
+                                    </td>
+                                    <td class="project-actions text-left">
+                                        <a class="btn btn-primary btn-sm" >
+                                            <i class="fas fa-folder">
+                                            </i>
+                                            View
+                                        </a>
+                                        <a class="btn btn-danger btn-sm" href="#">
+                                            <i class="fas fa-trash">
+                                            </i>
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <h5 style="color:red">Have not Hospital</h5>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,18 @@
+﻿@model Client.Models.Feedback
+    <partial name="../Shared/_header.cshtml" />
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4">
+            <h3 class="text-center title-feedback">Your feedback</h3>
+            <div class="container feedback">
+                <form asp-action="EmpFeedback">
+                    <label for="title">Full Name</label>
+                    <input type="text" id="fname" asp-for="Title" placeholder="Full name..">
+                    <label for="subject">Content</label>
+                    <textarea id="subject" class="content-fb" asp-for="Content" placeholder="Write something.." rows="3"></textarea>
+                    <button type="submit" class="btn btn-info">Send</button>
+                </form>
+            </div>
+        </div>
+    </div>
+<div class="col-4"></div>

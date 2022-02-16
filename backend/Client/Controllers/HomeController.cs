@@ -5,14 +5,17 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
 
 namespace Client.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly string url = "http://localhost:40316/api/";
+        HttpClient client = new HttpClient();
         private readonly ILogger<HomeController> _logger;
-
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
@@ -27,11 +30,35 @@ namespace Client.Controllers
         {
             return View();
         }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult HomePage()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
+        }
+        public ActionResult EmpFeedback()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EmpFeedback(Feedback fb)
+        {
+            try
+            {
+                var model = client.PostAsJsonAsync<Feedback>(url + "Feedbacks/", fb).Result;
+                if (model.IsSuccessStatusCode)
+                {
+                    ViewBag.Mess = "Inserted successfull!!";
+                }
+                else
+                {
+                    ViewBag.Mess = "Inserted faild!!";
+                }
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+            return View();
         }
     }
 }
