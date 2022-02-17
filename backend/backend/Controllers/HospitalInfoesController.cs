@@ -79,7 +79,6 @@ namespace backend.Controllers
         {
             _context.HospitalInfos.Add(hospitalInfo);
             await _context.SaveChangesAsync();
-
             return CreatedAtAction("GetHospitalInfo", new { id = hospitalInfo.Id }, hospitalInfo);
         }
 

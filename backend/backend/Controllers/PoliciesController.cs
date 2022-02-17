@@ -69,7 +69,6 @@ namespace backend.Controllers
         {
             _context.Policys.Add(policy);
             await _context.SaveChangesAsync();
-
             return CreatedAtAction("GetPolicy", new { id = policy.Id }, policy);
         }
         [HttpDelete("{id}")]

@@ -1,19 +1,40 @@
-﻿@model IEnumerable<Client.Models.Feedback>
+﻿@model IEnumerable<Client.Models.CompanyDetail>
 <partial name="../Shared/_NavbarAdmin.cshtml" />
 <div class="content-wrapper">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>FeeBack List</h1>
+                    <h1>Company</h1>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        @*<li class="breadcrumb-item"><a href="#">Home</a></li>*@
+                        <li class="breadcrumb-item active">
+                            <a class="btn btn-success" asp-controller="Home" asp-action="AddEmp">Add</a>
+                        </li>
+                    </ol>
                 </div>
             </div>
         </div>
     </section>
+    <div class="row">
+        <div class="col-5">
+            <div class="p-2 form-search">
+                <div class="search-hp">
+                    <form asp-action="EmpList">
+                        <p class="search-title">Search Name</p>
+                        <input type="text" class="search" />
+                        <button type="submit" class="btn-search"><i class="fas fa-search fa-fw"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <section class="content">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">FeeBack</h3>
+                <h3 class="card-title">Company</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -28,16 +49,16 @@
                                 #
                             </th>
                             <th style="width: 10%">
-                                Title
+                                Company Name
                             </th>
                             <th class="text-center">
-                                Content
+                                Address
                             </th>
                             <th style="width: 8%">
-                                Date
+                                Phone
                             </th>
                             <th style="width: 10%">
-                                EmpId
+                                CompanyUrl
                             </th>
                             <th style="width: 15%" class="text-center">
                                 Acction
@@ -51,25 +72,30 @@
                             {
                                 <tr>
                                     <td class="text-left">
-                                        @item.EmpId
+                                        @item.Id
                                     </td>
                                     <td class="text-left">
-                                        @item.Title
+                                        @item.CompanyName
                                     </td>
                                     <td class="project_progress text-left">
-                                        @item.Content
+                                        @item.Address
                                     </td>
                                     <td class="project-state text-left">
-                                        @item.Date
+                                        @item.Phone
                                     </td>
                                     <td class="project-state text-left">
-                                        @item.EmpId
+                                        @item.CompanyUrl
                                     </td>
                                     <td class="project-actions text-left">
                                         <a class="btn btn-primary btn-sm" href="#">
                                             <i class="fas fa-folder">
                                             </i>
                                             View
+                                        </a>
+                                        <a class="btn btn-info btn-sm" asp-controller="Admin" asp-action="EditEmp">
+                                            <i class="fas fa-pencil-alt">
+                                            </i>
+                                            Edit
                                         </a>
                                         <a class="btn btn-danger btn-sm" href="#">
                                             <i class="fas fa-trash">
@@ -79,10 +105,6 @@
                                     </td>
                                 </tr>
                             }
-                        }
-                        else
-                        {
-                            <h5 style="color:red">Have not FeeBack</h5>
                         }
                     </tbody>
                 </table>

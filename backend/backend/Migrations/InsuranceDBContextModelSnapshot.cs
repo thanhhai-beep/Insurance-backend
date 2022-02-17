@@ -53,7 +53,9 @@ namespace backend.Migrations
             modelBuilder.Entity("backend.Models.CompanyDetail", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
                         .HasMaxLength(100)
@@ -77,7 +79,8 @@ namespace backend.Migrations
                         .IsUnicode(false)
                         .HasColumnType("varchar(20)");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK__Employee__AF2DBB995524390A");
 
                     b.ToTable("CompanyDetails");
                 });

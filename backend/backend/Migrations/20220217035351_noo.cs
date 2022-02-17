@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace backend.Migrations
 {
-    public partial class innnit : Migration
+    public partial class noo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -147,9 +147,8 @@ namespace backend.Migrations
                 name: "UserLogin",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
                     Username = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
+                    id = table.Column<int>(type: "int", nullable: false),
                     PassWord = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
                     Roles = table.Column<bool>(type: "bit", nullable: true),
                     empid = table.Column<int>(type: "int", nullable: false)

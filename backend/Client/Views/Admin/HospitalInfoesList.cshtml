@@ -10,6 +10,19 @@
             </div>
         </div>
     </section>
+    <div class="row">
+        <div class="col-5">
+            <div class="p-2 form-search">
+                <div class="search-hp">
+                    <form asp-action="HospitalInfoesList">
+                        <p class="search-title">Search Name Hospital</p>
+                        <input type="text" class="search"/>
+                        <button type="submit" class="btn-search"><i class="fas fa-search fa-fw"></i></button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
     <section class="content">
         <div class="card">
             <div class="card-header">
@@ -17,9 +30,6 @@
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
-                    </button>
-                    <button type="button" class="btn btn-tool" data-card-widget="remove" title="Remove">
-                        <i class="fas fa-times"></i>
                     </button>
                 </div>
             </div>
@@ -59,7 +69,7 @@
                                     <td class="text-left">
                                         @item.Phone
                                     </td>
-                                    <td class="project_progress text-left">
+                                    <td class="project_progress text-center">
                                         @item.Phone
                                     </td>
                                     <td class="project-state text-left">

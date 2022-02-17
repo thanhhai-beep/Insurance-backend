@@ -52,7 +52,8 @@ namespace backend.Models
 
             modelBuilder.Entity<CompanyDetail>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
+                entity.HasKey(e => e.Id)
+                    .HasName("PK__Employee__AF2DBB995524390A");
 
                 entity.Property(e => e.Address)
                     .HasMaxLength(100)

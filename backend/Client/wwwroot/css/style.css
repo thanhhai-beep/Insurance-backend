@@ -1,4 +1,4 @@
-
+@import "Admin.css";
 body {
 	margin: 0;
 	font-family: 'Raleway', sans-serif;
@@ -1536,7 +1536,7 @@ input[type=text], input[type=password] {
 	width: 100%;
 	resize: vertical;
 	padding: 15px;
-	border-radius: 15px;
+	border-radius: 5px;
 	border: 0;
 	box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
 }

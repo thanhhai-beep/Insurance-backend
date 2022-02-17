@@ -10,8 +10,8 @@ using backend.Models;
 namespace backend.Migrations
 {
     [DbContext(typeof(InsuranceDBContext))]
-    [Migration("20220216141756_innnit")]
-    partial class innnit
+    [Migration("20220217035351_noo")]
+    partial class noo
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,7 +55,9 @@ namespace backend.Migrations
             modelBuilder.Entity("backend.Models.CompanyDetail", b =>
                 {
                     b.Property<int>("Id")
-                        .HasColumnType("int");
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<string>("Address")
                         .HasMaxLength(100)
@@ -79,7 +81,8 @@ namespace backend.Migrations
                         .IsUnicode(false)
                         .HasColumnType("varchar(20)");
 
-                    b.HasKey("Id");
+                    b.HasKey("Id")
+                        .HasName("PK__Employee__AF2DBB995524390A");
 
                     b.ToTable("CompanyDetails");
                 });

@@ -22,6 +22,8 @@ namespace Client.Controllers
         {
             return View();
         }
+
+        //Employee
         public IActionResult EmpList()
         {
             var emp = JsonConvert.DeserializeObject<IEnumerable<Employee>>(client.GetStringAsync(url + "Employees/").Result);
@@ -29,7 +31,8 @@ namespace Client.Controllers
         }
         public ActionResult AddEmp()
         {
-            return View();
+            var cn = JsonConvert.DeserializeObject<IEnumerable<CompanyDetail>>(client.GetStringAsync(url + "CompanyDetails/").Result);
+            return View(cn);
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -77,11 +80,14 @@ namespace Client.Controllers
             return View();
         }
 
+        //Feedback
         public IActionResult FeedBackList()
         {
             var fb = JsonConvert.DeserializeObject<IEnumerable<Feedback>>(client.GetStringAsync(url + "Feedbacks/").Result);
             return View(fb);
         }
+
+        //HospitalInfo
         public IActionResult HospitalInfoesList()
         {
             var hp = JsonConvert.DeserializeObject<IEnumerable<HospitalInfo>>(client.GetStringAsync(url + "HospitalInfoes/").Result);
@@ -108,6 +114,93 @@ namespace Client.Controllers
                 }
             }
             catch (Exception)
+            {
+                return BadRequest();
+            }
+            return View();
+        }
+        public ActionResult EditHp(int? id)
+        {
+            var hp = JsonConvert.DeserializeObject<HospitalInfo>(client.GetStringAsync(url + "HospitalInfoes/" + id).Result);
+            return View(hp);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditHp(int id, HospitalInfo hp)
+        {
+            try
+            {
+                var model = client.PutAsJsonAsync<HospitalInfo>(url + "HospitalInfoes/" + id, hp).Result;
+                if (model.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("HospitalInfoesList");
+                }
+            }
+            catch
+            {
+                return BadRequest();
+            }
+            return View(); 
+        }
+        public ActionResult DelHp(int? id)
+        {
+            var model = client.DeleteAsync(url + "HospitalInfoes/" + id).Result;
+            if (model.IsSuccessStatusCode)
+            {
+                TempData["Mess"] = "Deleted successfull!!!";
+            }
+            return RedirectToAction("HospitalInfoesList");
+        }
+        //Company
+        public IActionResult Company()
+        {
+            var cn = JsonConvert.DeserializeObject<IEnumerable<CompanyDetail>>(client.GetStringAsync(url + "CompanyDetails/").Result);
+            return View(cn);
+        }
+        public IActionResult AddCompany()
+        {
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddCompany(CompanyDetail cn)
+        {
+            try
+            {
+                var model = client.PostAsJsonAsync<CompanyDetail>(url + "CompanyDetails/", cn).Result;
+                if (model.IsSuccessStatusCode)
+                {
+                    ViewBag.Mess = "Inserted successfull!!";
+                }
+                else
+                {
+                    ViewBag.Mess = "Inserted faild!!";
+                }
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
+            return View();
+        }
+        public ActionResult EditCompany(int? id)
+        {
+            var cn = JsonConvert.DeserializeObject<CompanyDetail>(client.GetStringAsync(url + "CompanyDetails/" + id).Result);
+            return View(cn);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditCompany(int id, CompanyDetail cn)
+        {
+            try
+            {
+                var model = client.PutAsJsonAsync<CompanyDetail>(url + "CompanyDetails/" + id, cn).Result;
+                if (model.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Company");
+                }
+            }
+            catch
             {
                 return BadRequest();
             }

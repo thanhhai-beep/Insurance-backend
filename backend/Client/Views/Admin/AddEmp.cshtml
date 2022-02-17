@@ -1,4 +1,4 @@
-﻿@model Client.Models.Employee
+﻿@model IEnumerable<Client.Models.CompanyDetail>
 @ViewBag.Mess
 <div class="wrapper">
     <partial name="../Shared/_NavbarAdmin.cshtml" />
@@ -16,7 +16,7 @@
             <form asp-action="AddEmp" method="post">
                 <div class="row">
                     <div class="col-md-6">
-                        <div class="card card-primary">
+                        <div class="card card-primary" style="background-color: #f5f5f5">
                             <div class="card-header">
                                 <h3 class="card-title">General</h3>
                                 <div class="card-tools">
@@ -28,38 +28,29 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="inputName">First name</label>
-                                    <input type="text" asp-for="Fname" id="inputName" class="form-control">
+                                    <input type="text" name="Fname" id="inputName" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Last name</label>
-                                    <input type="text" asp-for="Lname" id="inputName" class="form-control">
+                                    <input type="text" name="Lname" id="inputName" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputDescription">Phone</label>
-                                    <input type="text" asp-for="Phone" id="inputName" class="form-control">
+                                    <input type="text" name="Phone" id="inputName" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Address</label>
-                                    <input type="text" asp-for="Address" id="inputName" class="form-control">
+                                    <input type="text" name="Address" id="inputName" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Email</label>
-                                    <input type="text" asp-for="Email" id="inputName" class="form-control">
+                                    <input type="text" name="Email" id="inputName" class="form-control">
                                 </div>
-                                @*<div class="form-group">
-                                    <label for="inputStatus">Status</label>
-                                    <select id="inputStatus" class="form-control custom-select">
-                                        <option selected disabled>Select one</option>
-                                        <option>On Hold</option>
-                                        <option>Canceled</option>
-                                        <option>Success</option>
-                                    </select>
-                                </div>*@
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="card card-secondary">
+                        <div class="card card-secondary" style="background-color: #f5f5f5">
                             <div class="card-header">
                                 <h3 class="card-title">Budget</h3>
                                 <div class="card-tools">
@@ -70,28 +61,26 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputName">Policy Id</label>
-                                    <input type="text" asp-for="PolicyId" id="inputName" class="form-control">
-                                </div>
-                                <div class="form-group">
                                     <label for="inputName">Stast sate</label>
-                                    <input type="date" asp-for="Startdate" id="inputName" class="form-control">
+                                    <input type="date" name="Startdate" id="inputName" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">End sate</label>
-                                    <input type="date" asp-for="Enddate" id="inputName" class="form-control">
+                                    <input type="date" name="Enddate" id="inputName" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName">Company Id</label>
-                                    <input type="text" asp-for="CompanyId" id="inputName" class="form-control">
+                                    <label for="inputStatus">Company</label>
+                                    <select id="inputStatus" name="CompanyId" class="form-control custom-select">
+                                        <option selected disabled>Select one</option>
+                                        @foreach (var item in Model)
+                                        {
+                                            <option value="@item.Id">@item.CompanyName.</option>
+                                        }
+                                    </select>
                                 </div>
-                                @*<div class="form-group">
-                                        <label for="inputName">Company Name</label>
-                                        <input type="text" asp-for="" id="inputName" class="form-control">
-                                    </div>*@
                                 <div class="form-group">
                                     <label for="inputName">Image</label>
-                                    <input type="text" asp-for="Image" id="inputName" class="form-control">
+                                    <input type="file" name="Image" id="inputName" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">IsAdmin</label>
@@ -104,7 +93,7 @@
                 </div>
                 <div class="row">
                     <div class="col-11">
-                        <button type="submit" class="btn btn-success float-right">Create new Employee</button> 
+                        <button type="submit" class="btn btn-success float-right">Create new Employee</button>
                     </div>
                 </div>
             </form>
