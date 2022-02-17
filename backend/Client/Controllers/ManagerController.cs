@@ -17,7 +17,7 @@ namespace Client.Controllers
         //Policy
         public IActionResult Policy(string searchname)
         {
-            var policy = JsonConvert.DeserializeObject<IEnumerable<Policy>>(client.GetStringAsync(url + "Policies?=searchname" + searchname).Result);
+            var policy = JsonConvert.DeserializeObject<IEnumerable<Policy>>(client.GetStringAsync(url + "Policies?searchname=" + searchname).Result);
             return View(policy);
         }
         public ActionResult AddPolicy()

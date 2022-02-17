@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\HAI\\react-js\\insurance\\Insurance-backend-API\\backend\\Client\\Client.csproj": {}
+    "D:\\HAI\\react-js\\Insurance-backend-API\\backend\\Client\\Client.csproj": {}
   },
   "projects": {
-    "D:\\HAI\\react-js\\insurance\\Insurance-backend-API\\backend\\Client\\Client.csproj": {
+    "D:\\HAI\\react-js\\Insurance-backend-API\\backend\\Client\\Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\HAI\\react-js\\insurance\\Insurance-backend-API\\backend\\Client\\Client.csproj",
+        "projectUniqueName": "D:\\HAI\\react-js\\Insurance-backend-API\\backend\\Client\\Client.csproj",
         "projectName": "Client",
-        "projectPath": "D:\\HAI\\react-js\\insurance\\Insurance-backend-API\\backend\\Client\\Client.csproj",
+        "projectPath": "D:\\HAI\\react-js\\Insurance-backend-API\\backend\\Client\\Client.csproj",
         "packagesPath": "C:\\Users\\TIDI\\.nuget\\packages\\",
-        "outputPath": "D:\\HAI\\react-js\\insurance\\Insurance-backend-API\\backend\\Client\\obj\\",
+        "outputPath": "D:\\HAI\\react-js\\Insurance-backend-API\\backend\\Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -43,6 +43,42 @@
       "frameworks": {
         "net5.0": {
           "targetAlias": "net5.0",
+          "dependencies": {
+            "AspNetCoreHero.ToastNotification": {
+              "target": "Package",
+              "version": "[1.1.0, )"
+            },
+            "Microsoft.AspNet.Mvc": {
+              "target": "Package",
+              "version": "[5.2.7, )"
+            },
+            "Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation": {
+              "target": "Package",
+              "version": "[5.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.13, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.13, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "PagedList.Core.Mvc": {
+              "target": "Package",
+              "version": "[3.0.0, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -61,7 +97,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.404\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.405\\RuntimeIdentifierGraph.json"
         }
       }
     }

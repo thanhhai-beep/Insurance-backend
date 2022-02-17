@@ -1,6 +1,7 @@
 ﻿using Client.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -61,5 +62,17 @@ namespace Client.Controllers
             return View();
         }
 
+        // Request Detail
+        public ActionResult EmpRequest()
+        {
+            var data = JsonConvert.DeserializeObject<IEnumerable<Employee>>(client.GetStringAsync(url).Result);
+            return View();
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EmpRequest()
+        {
+            return View();
+        }
     }
 }
