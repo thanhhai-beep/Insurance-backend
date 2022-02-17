@@ -11,6 +11,6 @@
     "\\backend\\Client\\Views\\Admin",
     "\\backend\\Client\\Views\\Login"
   ],
-  "SelectedNode": "\\backend\\Client\\Views\\Admin\\Company.cshtml",
+  "SelectedNode": "\\backend\\Client\\Controllers\\HomeController.cs",
   "PreviewInSolutionExplorer": false
 }

@@ -68,11 +68,11 @@ namespace Client.Controllers
             var data = JsonConvert.DeserializeObject<IEnumerable<Employee>>(client.GetStringAsync(url).Result);
             return View();
         }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EmpRequest()
-        {
-            return View();
-        }
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult EmpRequest()
+        //{
+        //    return View();
+        //}
     }
 }
