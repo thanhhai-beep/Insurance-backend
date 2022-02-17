@@ -9,7 +9,6 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        @*<li class="breadcrumb-item"><a href="#">Home</a></li>*@
                         <li class="breadcrumb-item active">
                             <a class="btn btn-success" asp-controller="Home" asp-action="AddEmp">Add</a>
                         </li>
@@ -22,9 +21,9 @@
         <div class="col-5">
             <div class="p-2 form-search">
                 <div class="search-hp">
-                    <form asp-action="EmpList">
+                    <form asp-action="Company" method="get">
                         <p class="search-title">Search Name</p>
-                        <input type="text" class="search" />
+                        <input type="text" name="searchname" class="search" />
                         <button type="submit" class="btn-search"><i class="fas fa-search fa-fw"></i></button>
                     </form>
                 </div>
@@ -48,16 +47,16 @@
                             <th>
                                 #
                             </th>
-                            <th style="width: 10%">
+                            <th class="text-left">
                                 Company Name
                             </th>
-                            <th class="text-center">
+                            <th>
                                 Address
                             </th>
-                            <th style="width: 8%">
+                            <th>
                                 Phone
                             </th>
-                            <th style="width: 10%">
+                            <th>
                                 CompanyUrl
                             </th>
                             <th style="width: 15%" class="text-center">
@@ -87,17 +86,12 @@
                                         @item.CompanyUrl
                                     </td>
                                     <td class="project-actions text-left">
-                                        <a class="btn btn-primary btn-sm" href="#">
-                                            <i class="fas fa-folder">
-                                            </i>
-                                            View
-                                        </a>
-                                        <a class="btn btn-info btn-sm" asp-controller="Admin" asp-action="EditEmp">
+                                        <a class="btn btn-info btn-sm" href="/Admin/EditCompany/@item.Id">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger btn-sm" href="#">
+                                        <a class="btn btn-danger btn-sm" href="/Admin/DelCompany/@item.Id">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete

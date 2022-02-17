@@ -22,8 +22,14 @@ namespace backend.Controllers
 
         // GET: api/HospitalInfoes
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<HospitalInfo>>> GetHospitalInfos()
+        public async Task<ActionResult<IEnumerable<HospitalInfo>>> GetHospitalInfos(string searchname)
         {
+            if (searchname != null)
+            {
+                var hos = from hp in _context.HospitalInfos select hp;
+                hos = hos.Where(s => s.HospitalName.Contains(searchname));
+                return Ok(hos);
+            }
             return await _context.HospitalInfos.ToListAsync();
         }
 
@@ -41,8 +47,6 @@ namespace backend.Controllers
             return hospitalInfo;
         }
 
-        // PUT: api/HospitalInfoes/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutHospitalInfo(int id, HospitalInfo hospitalInfo)
         {

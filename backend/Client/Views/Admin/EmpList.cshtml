@@ -9,7 +9,6 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        @*<li class="breadcrumb-item"><a href="#">Home</a></li>*@
                         <li class="breadcrumb-item active">
                             <a class="btn btn-success" asp-controller="Home" asp-action="AddEmp">Add</a>
                         </li>
@@ -22,9 +21,9 @@
         <div class="col-5">
             <div class="p-2 form-search">
                 <div class="search-hp">
-                    <form asp-action="EmpList">
+                    <form asp-action="EmpList" method="get">
                         <p class="search-title">Search Name</p>
-                        <input type="text" class="search" />
+                        <input type="text" name="searchname" class="search" />
                         <button type="submit" class="btn-search"><i class="fas fa-search fa-fw"></i></button>
                     </form>
                 </div>
@@ -132,12 +131,12 @@
                                             </i>
                                             View
                                         </a>
-                                        <a class="btn btn-info btn-sm" asp-controller="Admin" asp-action="EditEmp">
+                                        <a class="btn btn-info btn-sm" href="/Admin/EditEmp/@item.EmpId">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger btn-sm" href="#">
+                                        <a class="btn btn-danger btn-sm" href="/Admin/DelEmp/@item.EmpId">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete
@@ -145,10 +144,6 @@
                                     </td>
                                 </tr>
                             }
-                        }
-                        else
-                        {
-                            <h5 style="color:red">Have not Employee</h5>
                         }
                     </tbody>
                 </table>

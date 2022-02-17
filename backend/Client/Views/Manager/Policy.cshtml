@@ -1,16 +1,17 @@
-﻿@model IEnumerable<Client.Models.HospitalInfo>
+﻿@model IEnumerable<Client.Models.Policy>
 <partial name="../Shared/_NavbarAdmin.cshtml" />
 <div class="content-wrapper">
     <section class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Hospital</h1>
+                    <h1>Policy</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
+                        @*<li class="breadcrumb-item"><a href="#">Home</a></li>*@
                         <li class="breadcrumb-item active">
-                            <a class="btn btn-success" asp-controller="Home" asp-action="AddHp">Add</a>
+                            <a class="btn btn-success" asp-controller="Home" asp-action="AddPolicy">Add</a>
                         </li>
                     </ol>
                 </div>
@@ -21,9 +22,9 @@
         <div class="col-5">
             <div class="p-2 form-search">
                 <div class="search-hp">
-                    <form asp-action="HospitalInfoesList" method="get">
-                        <p class="search-title">Search Name Hospital</p>
-                        <input type="text" name="searchname" class="search"/>
+                    <form asp-action="EmpList" method="get">
+                        <p class="search-title">Search Name</p>
+                        <input type="text" name="searchname" class="search" />
                         <button type="submit" class="btn-search"><i class="fas fa-search fa-fw"></i></button>
                     </form>
                 </div>
@@ -33,7 +34,7 @@
     <section class="content">
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Hospital</h3>
+                <h3 class="card-title">Policy</h3>
                 <div class="card-tools">
                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                         <i class="fas fa-minus"></i>
@@ -48,16 +49,14 @@
                                 #
                             </th>
                             <th>
-                                HospitalName
+                                
+                                Policy Name
                             </th>
                             <th>
-                                Phone
+                                Policy Desciptrion
                             </th>
                             <th>
-                                Address
-                            </th>
-                            <th>
-                                Url
+                                Company
                             </th>
                             <th style="width: 15%" class="text-center">
                                 Acction
@@ -74,29 +73,20 @@
                                         @item.Id
                                     </td>
                                     <td class="text-left">
-                                        @item.HospitalName
+                                        @item.PolicyName
                                     </td>
-                                    <td class="project_progress">
-                                        @item.Phone
-                                    </td>
-                                    <td class="project-state text-left">
-                                        @item.Address
+                                    <td class="project_progress text-left">
+                                        @item.PolicyDesc
                                     </td>
                                     <td class="project-state text-left">
-                                        @item.Url
                                     </td>
-                                    <td class="project-actions text-left">
-                                        <a class="btn btn-primary btn-sm">
-                                            <i class="fas fa-folder">
-                                            </i>
-                                            View
-                                        </a>
-                                        <a class="btn btn-info btn-sm" href="/Admin/EditHp/@item.Id">
+                                    <td class="project-actions text-center">
+                                        <a class="btn btn-info btn-sm" href="/Manager/EditPolicy/@item.Id">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
                                         </a>
-                                        <a class="btn btn-danger btn-sm" href="/Admin/DelHp/@item.Id">
+                                        <a class="btn btn-danger btn-sm" href="/Manager/DelPolicy/@item.Id">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete

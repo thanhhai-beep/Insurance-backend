@@ -22,8 +22,14 @@ namespace backend.Controllers
 
         // GET: api/CompanyDetails
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CompanyDetail>>> GetCompanyDetails()
+        public async Task<ActionResult<IEnumerable<CompanyDetail>>> GetCompanyDetails(string searchname)
         {
+            if (searchname != null)
+            {
+                var company = from cn in _context.CompanyDetails select cn;
+                company = company.Where(s => s.CompanyName.Contains(searchname));
+                return Ok(company);
+            }
             return await _context.CompanyDetails.ToListAsync();
         }
 

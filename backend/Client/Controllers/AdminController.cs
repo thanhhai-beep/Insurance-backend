@@ -1,4 +1,5 @@
 ﻿using Client.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
@@ -14,19 +15,15 @@ namespace Client.Controllers
     {
         private readonly string url = "http://localhost:40316/api/";
         HttpClient client = new HttpClient();
-        public IActionResult Index()
-        {
-            return View();
-        }
         public IActionResult Dashboard()
         {
             return View();
         }
 
         //Employee
-        public IActionResult EmpList()
+        public IActionResult EmpList(string searchname)
         {
-            var emp = JsonConvert.DeserializeObject<IEnumerable<Employee>>(client.GetStringAsync(url + "Employees/").Result);
+            var emp = JsonConvert.DeserializeObject<IEnumerable<Employee>>(client.GetStringAsync(url + "Employees?=searchname" + searchname).Result);
             return View(emp);
         }
         public ActionResult AddEmp()
@@ -79,18 +76,35 @@ namespace Client.Controllers
             }
             return View();
         }
+        public ActionResult DelEmp(int id)
+        {
+            var model = client.DeleteAsync(url + "Employees/" + id).Result;
+            if (model.IsSuccessStatusCode)
+            {
+                TempData["Mess"] = "Deleted successfull!!!!!!!!!!!!!!!";
+            }
+            return RedirectToAction("EmpList");
+        }
 
         //Feedback
         public IActionResult FeedBackList()
         {
             var fb = JsonConvert.DeserializeObject<IEnumerable<Feedback>>(client.GetStringAsync(url + "Feedbacks/").Result);
-            return View(fb);
+            return View(fb); 
         }
-
-        //HospitalInfo
-        public IActionResult HospitalInfoesList()
+        public ActionResult DelFeedBack(int id)
         {
-            var hp = JsonConvert.DeserializeObject<IEnumerable<HospitalInfo>>(client.GetStringAsync(url + "HospitalInfoes/").Result);
+            var model = client.DeleteAsync(url + "Feedbacks/" + id).Result;
+            if (model.IsSuccessStatusCode)
+            {
+                TempData["Mess"] = "Deleted successfull!!!!!!!!!!!!!!!";
+            }
+            return RedirectToAction("FeedBackList");
+        }
+        //HospitalInfo
+        public IActionResult HospitalInfoesList(string searchname)
+        {
+            var hp = JsonConvert.DeserializeObject<IEnumerable<HospitalInfo>>(client.GetStringAsync(url + "HospitalInfoes?searchname=" + searchname).Result);
             return View(hp);
         }
         public IActionResult AddHp()
@@ -104,7 +118,7 @@ namespace Client.Controllers
             try
             {
                 var model = client.PostAsJsonAsync<HospitalInfo>(url + "HospitalInfoes/", hp).Result;
-                if (model.IsSuccessStatusCode)
+                if (model.IsSuccessStatusCode) 
                 {
                     ViewBag.Mess = "Inserted successfull!!";
                 }
@@ -152,9 +166,9 @@ namespace Client.Controllers
             return RedirectToAction("HospitalInfoesList");
         }
         //Company
-        public IActionResult Company()
+        public IActionResult Company(string searchname)
         {
-            var cn = JsonConvert.DeserializeObject<IEnumerable<CompanyDetail>>(client.GetStringAsync(url + "CompanyDetails/").Result);
+            var cn = JsonConvert.DeserializeObject<IEnumerable<CompanyDetail>>(client.GetStringAsync(url + "CompanyDetails?=searchname" + searchname).Result);
             return View(cn);
         }
         public IActionResult AddCompany()
@@ -205,6 +219,15 @@ namespace Client.Controllers
                 return BadRequest();
             }
             return View();
+        }
+        public ActionResult DelCompany(int id)
+        {
+            var model = client.DeleteAsync(url + "CompanyDetails/" + id).Result;
+            if (model.IsSuccessStatusCode)
+            {
+                TempData["Mess"] = "Deleted successfull!!!!!!!!!!!!!!!";
+            }
+            return RedirectToAction("Company");
         }
     }
 }

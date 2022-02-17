@@ -1,4 +1,4 @@
-﻿@model Client.Models.CompanyDetail
+﻿@model IEnumerable<Client.Models.CompanyDetail>
 <div class="wrapper">
     <partial name="../Shared/_NavbarAdmin.cshtml" />
     <div class="content-wrapper">
@@ -6,13 +6,13 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1>Update Company</h1>
+                        <h1>Policy Add</h1>
                     </div>
                 </div>
             </div>
         </section>
         <section class="content">
-            <form asp-action="EditCompany" method="post">
+            <form asp-action="AddPolicy" method="post">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card card-primary" style="background-color: #f5f5f5">
@@ -26,12 +26,12 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputName">Company name</label>
-                                    <input type="text" asp-for="CompanyName" id="inputName" class="form-control">
+                                    <label for="inputName">Policy name</label>
+                                    <input type="text" name="PolicyName" id="inputName" class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName">Address</label>
-                                    <input type="text" asp-for="Address" id="inputName" class="form-control">
+                                    <label for="inputName">Policy Description</label>
+                                    <input type="text" name="PolicyDesc" id="inputName" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -48,12 +48,16 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputDescription">Phone</label>
-                                    <input type="text" asp-for="Phone" id="inputName" class="form-control">
-                                </div>
-                                <div class="form-group">
-                                    <label for="inputName">Company Url</label>
-                                    <input type="text" asp-for="CompanyUrl" id="inputName" class="form-control">
+                                    <label for="inputStatus">Company</label>
+                                    <select id="inputStatus" name="CompanyId" class="form-control custom-select">
+                                        @if (Model != null)
+                                        {
+                                            @foreach (var item in Model)
+                                            {
+                                                <option value="@item.Id">@item.CompanyName</option>
+                                            }
+                                        }
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -61,7 +65,7 @@
                 </div>
                 <div class="row">
                     <div class="col-11">
-                        <button type="submit" class="btn btn-success float-right">Update Company</button>
+                        <button type="submit" class="btn btn-success float-right">Create new Policy</button>
                     </div>
                 </div>
             </form>

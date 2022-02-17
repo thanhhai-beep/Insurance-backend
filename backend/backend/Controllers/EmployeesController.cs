@@ -21,8 +21,14 @@ namespace backend.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
+        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees(string searchname)
         {
+            if (searchname != null)
+            {
+                var emp = from hp in _context.Employees select hp;
+                emp = emp.Where(s => s.Fname.Contains(searchname) || s.Lname.Contains(searchname));
+                return Ok(emp);
+            }
             return await _context.Employees.ToListAsync();
         }
 
