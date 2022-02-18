@@ -1584,3 +1584,29 @@ button {
 	border: 0;
 	box-shadow: 4px 4px 10px rgba(0,0,0,0.2);
 }
+
+/*Request*/
+.rqIP {
+	padding-top:110px;
+	font-size: 50px;
+	justify-content: center;
+	align-items: center;
+	color: brown;
+	padding-left: 83%;
+}
+
+.srIP {
+	margin-left: 40%;
+	width: 300px;
+}
+
+.gnIP {
+	margin-left: 28.5%;
+}
+.Frq {
+	background: #f8f8f8;
+}
+.fctr {
+	box-shadow: 0px 0px 0px rgb(0 0 0 / 20%)!important;
+}
+/*End Request*/
