@@ -31,7 +31,7 @@ namespace Client.Controllers
         {
             return View();
         }
-        public IActionResult HomePage()
+        public IActionResult HomePages()
         {
             return View();
         }
