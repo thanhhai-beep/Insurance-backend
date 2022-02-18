@@ -65,14 +65,35 @@ namespace Client.Controllers
         // Request Detail
         public ActionResult EmpRequest()
         {
-            var data = JsonConvert.DeserializeObject<IEnumerable<Employee>>(client.GetStringAsync(url).Result);
+            var emp = JsonConvert.DeserializeObject<IEnumerable<Employee>>(client.GetStringAsync(url + "Employees/").Result);
+            var policy = JsonConvert.DeserializeObject<IEnumerable<Policy>>(client.GetStringAsync(url + "Policies/").Result);
+            var company = JsonConvert.DeserializeObject<IEnumerable<CompanyDetail>>(client.GetStringAsync(url + "CompanyDetails/").Result);
+            ViewData["data"] = emp;
+            ViewData["policy"] = policy;
+            ViewData["company"] = company;
+            return View(ViewData);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EmpRequest(RequestDetail rq)
+        {
+            try
+            {
+                var model = client.PostAsJsonAsync<RequestDetail>(url + "RequestDetails/", rq).Result;
+                if (model.IsSuccessStatusCode)
+                {
+                    ViewBag.Mess = "Inserted successfull!!";
+                }
+                else
+                {
+                    ViewBag.Mess = "Inserted faild!!";
+                }
+            }
+            catch (Exception)
+            {
+                return BadRequest();
+            }
             return View();
         }
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult EmpRequest()
-        //{
-        //    return View();
-        //}
     }
 }
