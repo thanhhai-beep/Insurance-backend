@@ -25,13 +25,12 @@ namespace Client.Models
         public virtual DbSet<Policy> Policys { get; set; }
         public virtual DbSet<RequestDetail> RequestDetails { get; set; }
         public virtual DbSet<TotalDescription> TotalDescriptions { get; set; }
-        public virtual DbSet<UserLogin> UserLogins { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("server=DESKTOP-RP9BI5I\\SQLEXPRESS01; database=InsuranceDB; uid=sa;pwd=123");
+                optionsBuilder.UseSqlServer(@"server=DESKTOP-MDNKSPU\SQLEXPRESS01; database=InsuranceDB; uid=sa;pwd=1234");
             }
         }
 
@@ -42,171 +41,84 @@ namespace Client.Models
             modelBuilder.Entity<ApprovalDetail>(entity =>
             {
                 entity.Property(e => e.Date).HasColumnType("datetime");
-
                 entity.Property(e => e.EmpId).HasColumnName("Emp_Id");
-
-                entity.Property(e => e.Reason)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.Reason).HasMaxLength(50).IsUnicode(false);
             });
 
             modelBuilder.Entity<CompanyDetail>(entity =>
             {
-                entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.Address)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.CompanyName)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.CompanyUrl)
-                    .HasMaxLength(50)
-                    .IsUnicode(false)
-                    .HasColumnName("CompanyURL");
-
-                entity.Property(e => e.Phone)
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
+                entity.ToTable("CompanyDetail");
+                entity.HasKey(e => e.Id).HasName("PK__CompanyDetail");
+                entity.Property(e => e.Address).HasMaxLength(100).IsUnicode(false);
+                entity.Property(e => e.CompanyName).IsRequired().HasMaxLength(50).IsUnicode(false);
+                entity.Property(e => e.CompanyUrl).HasMaxLength(50).IsUnicode(false).HasColumnName("CompanyURL");
+                entity.Property(e => e.Phone).HasMaxLength(20).IsUnicode(false);
             });
 
             modelBuilder.Entity<Employee>(entity =>
             {
-                entity.HasKey(e => e.EmpId)
-                    .HasName("PK__Employee__AF2DBB995524390A");
-
+                entity.HasKey(e => e.EmpId).HasName("PK__Employee__AF2DBB995524390A");
                 entity.ToTable("Employee");
-
-                entity.Property(e => e.Address)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
+                entity.Property(e => e.Address).HasMaxLength(100).IsUnicode(false);
+                entity.Property(e => e.Password).HasMaxLength(30).IsUnicode(false);
                 entity.Property(e => e.CompanyId).HasColumnName("Company_Id");
-
-                entity.Property(e => e.Email)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
+                entity.Property(e => e.Email).HasMaxLength(50).IsUnicode(false);
                 entity.Property(e => e.Enddate).HasColumnType("datetime");
-
-                entity.Property(e => e.Fname)
-                    .HasMaxLength(20)
-                    .IsUnicode(false)
-                    .HasColumnName("FName");
-
-                entity.Property(e => e.Image)
-                    .HasMaxLength(200)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Lname)
-                    .HasMaxLength(20)
-                    .IsUnicode(false)
-                    .HasColumnName("LName");
-
-                entity.Property(e => e.Phone)
-                    .HasMaxLength(20)
-                    .IsUnicode(false);
-
+                entity.Property(e => e.Fname).HasMaxLength(20).IsUnicode(false).HasColumnName("FName");
+                entity.Property(e => e.Image).HasMaxLength(200).IsUnicode(false);
+                entity.Property(e => e.Lname).HasMaxLength(20).IsUnicode(false).HasColumnName("LName");
+                entity.Property(e => e.Phone).HasMaxLength(20).IsUnicode(false);
                 entity.Property(e => e.PolicyId).HasColumnName("Policy_Id");
-
                 entity.Property(e => e.Startdate).HasColumnType("datetime");
+                entity.Property(e => e.IsAdmin).IsUnicode(false);
             });
 
             modelBuilder.Entity<Feedback>(entity =>
             {
                 entity.ToTable("Feedback");
-
-                entity.Property(e => e.Content)
-                    .HasMaxLength(100)
-                    .IsUnicode(false);
-
+                entity.HasKey(e => e.Id).HasName("PK__Feedback");
+                entity.Property(e => e.Content).HasMaxLength(100).IsUnicode(false);
                 entity.Property(e => e.Date).HasColumnType("datetime");
-
                 entity.Property(e => e.EmpId).HasColumnName("Emp_Id");
-
-                entity.Property(e => e.Title)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.Title).HasMaxLength(50).IsUnicode(false);
             });
 
             modelBuilder.Entity<HospitalInfo>(entity =>
             {
                 entity.ToTable("HospitalInfo");
-
-                entity.Property(e => e.Address)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.HospitalName)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Phone)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.Url)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.HasKey(e => e.Id).HasName("PK__HospitalInfo");
+                entity.Property(e => e.Address).HasMaxLength(50).IsUnicode(false);
+                entity.Property(e => e.HospitalName).HasMaxLength(50).IsUnicode(false);
+                entity.Property(e => e.Phone).HasMaxLength(50).IsUnicode(false);
+                entity.Property(e => e.Url).HasMaxLength(50).IsUnicode(false);
             });
 
             modelBuilder.Entity<Policy>(entity =>
             {
+                entity.ToTable("Policy");
+                entity.HasKey(e => e.Id).HasName("PK__Policy");
                 entity.Property(e => e.CompanyId).HasColumnName("Company_Id");
-
-                entity.Property(e => e.PolicyDesc)
-                    .HasMaxLength(150)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.PolicyName)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
+                entity.Property(e => e.PolicyDesc).HasMaxLength(150).IsUnicode(false);
+                entity.Property(e => e.PolicyName).HasMaxLength(50).IsUnicode(false);
             });
 
             modelBuilder.Entity<RequestDetail>(entity =>
             {
+                entity.ToTable("RequestDetail");
+                entity.HasKey(e => e.Id).HasName("PK__RequestDetail");
                 entity.Property(e => e.CompanyId).HasColumnName("Company_Id");
-
                 entity.Property(e => e.EmpId).HasColumnName("Emp_Id");
-
                 entity.Property(e => e.PolicyId).HasColumnName("Policy_Id");
-
                 entity.Property(e => e.RequestDate).HasColumnType("datetime");
             });
-
             modelBuilder.Entity<TotalDescription>(entity =>
             {
                 entity.ToTable("TotalDescription");
-
+                entity.HasKey(e => e.Id).HasName("PK__TotalDescription");
                 entity.Property(e => e.CompanyId).HasColumnName("Company_Id");
-
-                entity.Property(e => e.PolicyDesc)
-                    .HasMaxLength(250)
-                    .IsUnicode(false);
-
+                entity.Property(e => e.PolicyDesc).HasMaxLength(250).IsUnicode(false);
                 entity.Property(e => e.PolicyId).HasColumnName("Policy_Id");
             });
-
-            modelBuilder.Entity<UserLogin>(entity =>
-            {
-                entity.HasKey(e => e.Username)
-                    .HasName("PK__UserLogi__536C85E510FA162A");
-
-                entity.ToTable("UserLogin");
-
-                entity.Property(e => e.Username)
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-
-                entity.Property(e => e.PassWord)
-                    .IsRequired()
-                    .HasMaxLength(50)
-                    .IsUnicode(false);
-            });
-
             OnModelCreatingPartial(modelBuilder);
         }
 

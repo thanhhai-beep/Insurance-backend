@@ -13,72 +13,42 @@ namespace Client.Controllers
 {
     public class LoginController : Controller
     {
+        private readonly string url = "http://localhost:40316/api/";
+        HttpClient client = new HttpClient();
         private readonly InsuranceDBContext _con;
         public LoginController(InsuranceDBContext con)
         {
             _con = con;
         }
-        private readonly string url = "http://localhost:40316/api/";
-        HttpClient client = new HttpClient();
         [HttpGet]
         public ActionResult Login()
         {
             return View();
         }
-
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Login(string username, string password)
-        //{
-        //    var login = JsonConvert.DeserializeObject<IEnumerable<UserLogin>>(client.GetStringAsync(url + "Security/" + username + password).Result);
-
-        //    var user = login.SingleOrDefault(e => e.Username.Equals(username));
-        //    if (user != null)
-        //    {
-        //        HttpContext.Session.SetString("SessionLogin", username);
-        //        TempData["SessionLogin"] = username;
-        //        if (user.PassWord.Equals(password))
-        //        {
-        //            TempData["SessionLogin"] = HttpContext.Session.GetString("SessionLogin");
-        //        }
-        //        else
-        //        {
-        //            ViewBag.mess = "Invalid password";
-        //        }
-        //    }
-        //    else
-        //    {
-        //        ViewBag.mess = "Invalid UserName";
-        //    }
-        //    return View();
-        //}
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Login([Bind("Username, PassWord")] UserLogin user, bool? remem)
+        public ActionResult Login(string email, string password)
         {
-            if (user.Username != null && user.PassWord != null)
+            if (email != null && password != null)
             {
-                var login = _con.UserLogins.FirstOrDefault(s => s.Username == user.Username && s.PassWord == user.PassWord);
+                var login = _con.Employees.FirstOrDefault(s => s.Email == email && s.Password == password);
                 if (login != null)
                 {
-                    if (remem == true)
-                    {
-                        HttpContext.Session.SetString("SSLogin", user.Username);
-                        HttpContext.Session.SetString("SSLogin", user.PassWord);
-                    }
-                    if (login.Roles == true)
-                    {
-                        return RedirectToAction("Dashboard", "Admin");
+                    HttpContext.Session.SetString("SSLogin", email);
+                    HttpContext.Session.SetString("Username", login.Fname + login.Lname);
+                    HttpContext.Session.SetInt32("EmpId", login.EmpId);
+                    if (login.IsAdmin == 1)
+                    { 
+                        return RedirectToAction("DashBoard", "Admin");
                     }
                     else
                     {
-                        return RedirectToAction("HomePage", "Home");
+                        return RedirectToAction("HomePages", "Home");
                     }
                 }
                 else
                 {
-                    ViewBag.Mess = "Username or password is incorrect";
+                    ViewBag.Mess = "Username or password is";
                     return View();
                 }
             }
@@ -87,6 +57,12 @@ namespace Client.Controllers
                 ViewBag.Mess = "Username or password is incorrect";
                 return View();
             }
+        }
+        public ActionResult Profile(int? id)
+        {
+            var emp = JsonConvert.DeserializeObject<Employee>(client.GetStringAsync(url + "Employees/" + id).Result);
+            ViewData["emp"] = emp;
+            return View();
         }
     }
 }

@@ -20,13 +20,13 @@ namespace backend.Controllers
         }
 
         [HttpPost("{login}")]
-        public async Task<ActionResult<bool>> Login([FromForm] string username, [FromForm] string password)
+        public async Task<ActionResult<bool>> Login([FromForm] string email, [FromForm] string password)
         {
-            if (username is null || password is null)
+            if (email is null || password is null)
             {
                 return BadRequest();
             }
-            var login = await _context.UserLogins.FirstOrDefaultAsync(s => s.Username == username && s.PassWord == password);
+            var login = await _context.Employees.FirstOrDefaultAsync(s => s.Email == email && s.Password == password);
             if (login is null)
             {
                 return false;

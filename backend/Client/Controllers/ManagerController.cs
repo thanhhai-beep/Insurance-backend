@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
 using Client.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -17,11 +18,21 @@ namespace Client.Controllers
         //Policy
         public IActionResult Policy(string searchname)
         {
+            var name = HttpContext.Session.GetString("SSLogin");
+            if (name == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var policy = JsonConvert.DeserializeObject<IEnumerable<Policy>>(client.GetStringAsync(url + "Policies?searchname=" + searchname).Result);
             return View(policy);
         }
         public ActionResult AddPolicy()
         {
+            var name = HttpContext.Session.GetString("SSLogin");
+            if (name == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var cn = JsonConvert.DeserializeObject<IEnumerable<CompanyDetail>>(client.GetStringAsync(url + "CompanyDetails/").Result);
             return View(cn);
         }
@@ -49,6 +60,11 @@ namespace Client.Controllers
         }
         public ActionResult EditPolicy(int? id)
         {
+            var name = HttpContext.Session.GetString("SSLogin");
+            if (name == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var cn = JsonConvert.DeserializeObject<Policy>(client.GetStringAsync(url + "Policies/" + id).Result);
             return View(cn);
         }

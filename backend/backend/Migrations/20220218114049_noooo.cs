@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace backend.Migrations
 {
-    public partial class noo : Migration
+    public partial class noooo : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -25,7 +25,7 @@ namespace backend.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CompanyDetails",
+                name: "CompanyDetail",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -37,7 +37,7 @@ namespace backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CompanyDetails", x => x.Id);
+                    table.PrimaryKey("PK__CompanyDetail", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -47,6 +47,7 @@ namespace backend.Migrations
                     EmpId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FName = table.Column<string>(type: "varchar(20)", unicode: false, maxLength: 20, nullable: true),
+                    Password = table.Column<string>(type: "varchar(30)", unicode: false, maxLength: 30, nullable: true),
                     LName = table.Column<string>(type: "varchar(20)", unicode: false, maxLength: 20, nullable: true),
                     Phone = table.Column<string>(type: "varchar(20)", unicode: false, maxLength: 20, nullable: true),
                     Address = table.Column<string>(type: "varchar(100)", unicode: false, maxLength: 100, nullable: true),
@@ -56,7 +57,7 @@ namespace backend.Migrations
                     Policy_Id = table.Column<int>(type: "int", nullable: true),
                     Company_Id = table.Column<int>(type: "int", nullable: true),
                     Image = table.Column<string>(type: "varchar(200)", unicode: false, maxLength: 200, nullable: true),
-                    IsAdmin = table.Column<bool>(type: "bit", nullable: true)
+                    IsAdmin = table.Column<int>(type: "int", unicode: false, nullable: true)
                 },
                 constraints: table =>
                 {
@@ -76,7 +77,7 @@ namespace backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Feedback", x => x.Id);
+                    table.PrimaryKey("PK__Feedback", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -92,11 +93,11 @@ namespace backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HospitalInfo", x => x.Id);
+                    table.PrimaryKey("PK__HospitalInfo", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Policys",
+                name: "Policy",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -107,11 +108,11 @@ namespace backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Policys", x => x.Id);
+                    table.PrimaryKey("PK__Policy", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "RequestDetails",
+                name: "RequestDetail",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -124,7 +125,7 @@ namespace backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_RequestDetails", x => x.Id);
+                    table.PrimaryKey("PK__RequestDetail", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -140,22 +141,7 @@ namespace backend.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_TotalDescription", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "UserLogin",
-                columns: table => new
-                {
-                    Username = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
-                    id = table.Column<int>(type: "int", nullable: false),
-                    PassWord = table.Column<string>(type: "varchar(50)", unicode: false, maxLength: 50, nullable: false),
-                    Roles = table.Column<bool>(type: "bit", nullable: true),
-                    empid = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK__UserLogi__536C85E510FA162A", x => x.Username);
+                    table.PrimaryKey("PK__TotalDescription", x => x.Id);
                 });
         }
 
@@ -165,7 +151,7 @@ namespace backend.Migrations
                 name: "ApprovalDetails");
 
             migrationBuilder.DropTable(
-                name: "CompanyDetails");
+                name: "CompanyDetail");
 
             migrationBuilder.DropTable(
                 name: "Employee");
@@ -177,16 +163,13 @@ namespace backend.Migrations
                 name: "HospitalInfo");
 
             migrationBuilder.DropTable(
-                name: "Policys");
+                name: "Policy");
 
             migrationBuilder.DropTable(
-                name: "RequestDetails");
+                name: "RequestDetail");
 
             migrationBuilder.DropTable(
                 name: "TotalDescription");
-
-            migrationBuilder.DropTable(
-                name: "UserLogin");
         }
     }
 }

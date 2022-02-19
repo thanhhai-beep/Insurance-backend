@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-
-#nullable disable
-
 namespace Client.Models
 {
     public partial class Feedback

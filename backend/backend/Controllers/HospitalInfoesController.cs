@@ -24,13 +24,13 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<HospitalInfo>>> GetHospitalInfos(string searchname)
         {
+            var hos = from hp in _context.HospitalInfos select hp;
             if (searchname != null)
             {
-                var hos = from hp in _context.HospitalInfos select hp;
                 hos = hos.Where(s => s.HospitalName.Contains(searchname));
                 return Ok(hos);
             }
-            return await _context.HospitalInfos.ToListAsync();
+            return Ok(hos);
         }
 
         // GET: api/HospitalInfoes/5

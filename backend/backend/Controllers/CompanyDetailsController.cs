@@ -24,13 +24,13 @@ namespace backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CompanyDetail>>> GetCompanyDetails(string searchname)
         {
+            var company = from cn in _context.CompanyDetails select cn;
             if (searchname != null)
             {
-                var company = from cn in _context.CompanyDetails select cn;
                 company = company.Where(s => s.CompanyName.Contains(searchname));
                 return Ok(company);
             }
-            return await _context.CompanyDetails.ToListAsync();
+            return Ok(company);
         }
 
         // GET: api/CompanyDetails/5
@@ -43,12 +43,9 @@ namespace backend.Controllers
             {
                 return NotFound();
             }
-
             return companyDetail;
         }
 
-        // PUT: api/CompanyDetails/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCompanyDetail(int id, CompanyDetail companyDetail)
         {

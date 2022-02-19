@@ -23,11 +23,21 @@ namespace Client.Controllers
         //Employee
         public IActionResult EmpList(string searchname)
         {
-            var emp = JsonConvert.DeserializeObject<IEnumerable<Employee>>(client.GetStringAsync(url + "Employees?=searchname" + searchname).Result);
+            var name = HttpContext.Session.GetString("SSLogin");
+            if (name == null)
+            {
+                return RedirectToAction("Login","Login");
+            }
+            var emp = JsonConvert.DeserializeObject<IEnumerable<Employee>>(client.GetStringAsync(url + "Employees?searchname=" + searchname).Result);
             return View(emp);
         }
         public ActionResult AddEmp()
         {
+            var name = HttpContext.Session.GetString("SSLogin");
+            if (name == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var cn = JsonConvert.DeserializeObject<IEnumerable<CompanyDetail>>(client.GetStringAsync(url + "CompanyDetails/").Result);
             return View(cn);
         }
@@ -55,6 +65,11 @@ namespace Client.Controllers
         }
         public ActionResult EditEmp(int? id)
         {
+            var name = HttpContext.Session.GetString("SSLogin");
+            if (name == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var emp = JsonConvert.DeserializeObject<Employee>(client.GetStringAsync(url + "Employees/" + id).Result);
             return View(emp);
         }
@@ -89,6 +104,11 @@ namespace Client.Controllers
         //Feedback
         public IActionResult FeedBackList()
         {
+            var name = HttpContext.Session.GetString("SSLogin");
+            if (name == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var fb = JsonConvert.DeserializeObject<IEnumerable<Feedback>>(client.GetStringAsync(url + "Feedbacks/").Result);
             return View(fb); 
         }
@@ -104,11 +124,21 @@ namespace Client.Controllers
         //HospitalInfo
         public IActionResult HospitalInfoesList(string searchname)
         {
+            var name = HttpContext.Session.GetString("SSLogin");
+            if (name == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var hp = JsonConvert.DeserializeObject<IEnumerable<HospitalInfo>>(client.GetStringAsync(url + "HospitalInfoes?searchname=" + searchname).Result);
             return View(hp);
         }
         public IActionResult AddHp()
         {
+            var name = HttpContext.Session.GetString("SSLogin");
+            if (name == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             return View();
         }
         [HttpPost]
@@ -135,6 +165,11 @@ namespace Client.Controllers
         }
         public ActionResult EditHp(int? id)
         {
+            var name = HttpContext.Session.GetString("SSLogin");
+            if (name == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var hp = JsonConvert.DeserializeObject<HospitalInfo>(client.GetStringAsync(url + "HospitalInfoes/" + id).Result);
             return View(hp);
         }
@@ -168,11 +203,21 @@ namespace Client.Controllers
         //Company
         public IActionResult Company(string searchname)
         {
+            var name = HttpContext.Session.GetString("SSLogin");
+            if (name == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var cn = JsonConvert.DeserializeObject<IEnumerable<CompanyDetail>>(client.GetStringAsync(url + "CompanyDetails?=searchname" + searchname).Result);
             return View(cn);
         }
         public IActionResult AddCompany()
         {
+            var name = HttpContext.Session.GetString("SSLogin");
+            if (name == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             return View();
         }
         [HttpPost]
@@ -199,6 +244,11 @@ namespace Client.Controllers
         }
         public ActionResult EditCompany(int? id)
         {
+            var name = HttpContext.Session.GetString("SSLogin");
+            if (name == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
             var cn = JsonConvert.DeserializeObject<CompanyDetail>(client.GetStringAsync(url + "CompanyDetails/" + id).Result);
             return View(cn);
         }
