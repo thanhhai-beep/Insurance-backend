@@ -1,8 +1,16 @@
-﻿<div class="sidebar">
+﻿<div class="sidebar sidebar-profile">
+    <ul class="profile-modal">
+        <li class="link-modal">
+            <a href="/Login/Profile/@Context.Session.GetInt32("EmpId")" class="d-block">Profile</a>
+        </li>
+        <li class="link-modal">
+            <a href="/Login/Logout" class="d-block">Logout</a>
+        </li>
+    </ul>
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
             <img src="~/ADdist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
-        </div>
+        </div> 
         <div class="info">
             @using Microsoft.AspNetCore.Http;
             <p>

@@ -60,9 +60,16 @@ namespace Client.Controllers
         }
         public ActionResult Profile(int? id)
         {
-            var emp = JsonConvert.DeserializeObject<Employee>(client.GetStringAsync(url + "Employees/" + id).Result);
-            ViewData["emp"] = emp;
+            var res = JsonConvert.DeserializeObject<List<ProfileResult>>(client.GetStringAsync(url + "Security/" + id).Result);
+            ViewData["emp"] = res;
             return View();
+        }
+        public ActionResult Logout()
+        {
+            HttpContext.Session.Remove("SSLogin");
+            HttpContext.Session.Remove("Username");
+            HttpContext.Session.Remove("EmpId");
+            return RedirectToAction("Login");
         }
     }
 }

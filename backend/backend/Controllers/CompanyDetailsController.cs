@@ -22,7 +22,7 @@ namespace backend.Controllers
 
         // GET: api/CompanyDetails
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<CompanyDetail>>> GetCompanyDetails(string searchname)
+        public async Task<ActionResult> GetCompanyDetails(string searchname)
         {
             var company = from cn in _context.CompanyDetails select cn;
             if (searchname != null)

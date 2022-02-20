@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
@@ -39,14 +40,25 @@ namespace Client.Controllers
                 return RedirectToAction("Login", "Login");
             }
             var cn = JsonConvert.DeserializeObject<IEnumerable<CompanyDetail>>(client.GetStringAsync(url + "CompanyDetails/").Result);
-            return View(cn);
+            ViewData["company"] = cn;
+            return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddEmp(Employee emp)
+        public async Task<IActionResult> AddEmp(Employee emp, IFormFile file)
         {
             try
             {
+                if(file != null)
+                {
+                    string filename = Path.GetFileName(file.FileName);
+                    string file_path = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/imageEmp", filename);
+                    using (var stream = new FileStream(file_path, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+                    emp.Image = "imageEmp/" + filename;
+                }
                 var model = client.PostAsJsonAsync<Employee>(url + "Employees/", emp).Result;
                 if (model.IsSuccessStatusCode)
                 {
@@ -61,7 +73,7 @@ namespace Client.Controllers
             {
                 return BadRequest();
             }
-            return View();
+            return RedirectToAction("EmpList");
         }
         public ActionResult EditEmp(int? id)
         {
@@ -75,8 +87,18 @@ namespace Client.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditEmp(int id, Employee emp)
+        public async Task<IActionResult> EditEmp(int id, Employee emp, IFormFile file)
         {
+            if(file != null)
+            {
+                string filename = Path.GetFileName(file.FileName);
+                string file_path = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/imageEmp", filename);
+                using (var stream = new FileStream(file_path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+                emp.Image = "imageEmp/" + filename;
+            }
             try
             {
                 var model = client.PutAsJsonAsync<Employee>(url + "Employees/" + id, emp).Result;
@@ -208,7 +230,7 @@ namespace Client.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            var cn = JsonConvert.DeserializeObject<IEnumerable<CompanyDetail>>(client.GetStringAsync(url + "CompanyDetails?=searchname" + searchname).Result);
+            var cn = JsonConvert.DeserializeObject<IEnumerable<CompanyDetail>>(client.GetStringAsync(url + "CompanyDetails?searchname=" + searchname).Result);
             return View(cn);
         }
         public IActionResult AddCompany()

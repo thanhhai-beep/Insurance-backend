@@ -23,8 +23,9 @@ namespace Client.Controllers
             {
                 return RedirectToAction("Login", "Login");
             }
-            var policy = JsonConvert.DeserializeObject<IEnumerable<Policy>>(client.GetStringAsync(url + "Policies?searchname=" + searchname).Result);
-            return View(policy);
+            var policy = JsonConvert.DeserializeObject<List<ProfileResult>>(client.GetStringAsync(url + "Policies?searchname=" + searchname).Result);
+            ViewData["policy"] = policy;
+            return View();
         }
         public ActionResult AddPolicy()
         {

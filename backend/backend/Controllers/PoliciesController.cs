@@ -21,25 +21,22 @@ namespace backend.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Policy>>> GetPolicys(string searchname)
+        public async Task<ActionResult> GetPolicys(string searchname)
         {
             var policy = from p in _context.Policys
                          join cn in _context.CompanyDetails on p.CompanyId equals cn.Id
                          select new
                          {
-                             p.Id,
-                             p.PolicyName,
-                             p.PolicyDesc,
-                             p.CompanyId,
-                             cn.CompanyName
+                             p,cn
                          };
             if (searchname != null)
             {
-                policy = policy.Where(s => s.PolicyName.Contains(searchname));
+                policy = policy.Where(s => s.p.PolicyName.Contains(searchname));
                 return Ok(policy);
             }
             return Ok(policy);
         }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<Policy>> GetPolicy(int id)
         {

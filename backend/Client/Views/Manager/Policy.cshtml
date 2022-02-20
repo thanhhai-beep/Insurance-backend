@@ -1,5 +1,4 @@
-﻿@model IEnumerable<Client.Models.Policy>
-<partial name="../Shared/_NavbarAdmin.cshtml" />
+﻿<partial name="../Shared/_NavbarAdmin.cshtml" />
 <div class="content-wrapper">
     <section class="content-header">
         <div class="container-fluid">
@@ -9,7 +8,6 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        @*<li class="breadcrumb-item"><a href="#">Home</a></li>*@
                         <li class="breadcrumb-item active">
                             <a class="btn btn-success" asp-controller="Manager" asp-action="AddPolicy">Add</a>
                         </li>
@@ -64,36 +62,39 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @if (Model != null)
+                        @using Newtonsoft.Json;
+                        @foreach (var item in ViewData["policy"] as IList<ProfileResult>)
                         {
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td class="text-left">
-                                        @item.Id
-                                    </td>
-                                    <td class="text-left">
-                                        @item.PolicyName
-                                    </td>
-                                    <td class="project_progress text-left">
-                                        @item.PolicyDesc
-                                    </td>
-                                    <td class="project-state text-left">
-                                    </td>
-                                    <td class="project-actions text-center">
-                                        <a class="btn btn-info btn-sm" href="/Manager/EditPolicy/@item.Id">
-                                            <i class="fas fa-pencil-alt">
-                                            </i>
-                                            Edit
-                                        </a>
-                                        <a class="btn btn-danger btn-sm" href="/Manager/DelPolicy/@item.Id">
-                                            <i class="fas fa-trash">
-                                            </i>
-                                            Delete
-                                        </a>
-                                    </td>
-                                </tr>
-                            }
+                            var p = item.p.ToString();
+                            var policy = JsonConvert.DeserializeObject<Policy>(p);
+                            var cn = item.cn.ToString();
+                            var company = JsonConvert.DeserializeObject<CompanyDetail>(cn);
+                            <tr>
+                                <td class="text-left">
+                                    @policy.Id
+                                </td>
+                                <td class="text-left">
+                                    @policy.PolicyName
+                                </td>
+                                <td class="project_progress text-left">
+                                    @policy.PolicyDesc
+                                </td>
+                                <td class="project-state text-left">
+                                    @company.CompanyName
+                                </td>
+                                <td class="project-actions text-center">
+                                    <a class="btn btn-info btn-sm" href="/Manager/EditPolicy/@policy.Id">
+                                        <i class="fas fa-pencil-alt">
+                                        </i>
+                                        Edit
+                                    </a>
+                                    <a class="btn btn-danger btn-sm" href="/Manager/DelPolicy/@policy.Id">
+                                        <i class="fas fa-trash">
+                                        </i>
+                                        Delete
+                                    </a>
+                                </td>
+                            </tr>
                         }
                     </tbody>
                 </table>

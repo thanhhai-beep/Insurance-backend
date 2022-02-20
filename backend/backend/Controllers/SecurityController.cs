@@ -36,5 +36,17 @@ namespace backend.Controllers
                 return true;
             }
         }
+        [HttpGet("{id}")]
+        public async Task<ActionResult> Profile(int id)
+        {   
+                var profile = from e in _context.Employees join
+                                   cn in _context.CompanyDetails on e.CompanyId equals cn.Id
+                              join p in _context.Policys on e.PolicyId equals p.Id
+                              where e.EmpId == id
+                              select new {
+                                  e, cn, p
+                              };
+            return Ok(profile);
+        }
     }
 }
