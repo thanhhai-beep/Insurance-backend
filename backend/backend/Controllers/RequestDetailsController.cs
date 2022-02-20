@@ -22,9 +22,20 @@ namespace backend.Controllers
 
         // GET: api/RequestDetails
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<RequestDetail>>> GetRequestDetails()
+        public async Task<ActionResult> GetRequestDetails()
         {
-            return await _context.RequestDetails.ToListAsync();
+            var list = from rq in _context.RequestDetails
+                       join e in _context.Employees on rq.EmpId equals e.EmpId
+                       join cn in _context.CompanyDetails on rq.CompanyId equals cn.Id
+                       join p in _context.Policys on rq.PolicyId equals p.Id
+                       select new
+                       {
+                           rq,
+                           e,
+                           cn,
+                           p
+                       };
+            return Ok(list);
         }
 
         // GET: api/RequestDetails/5

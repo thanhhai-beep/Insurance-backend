@@ -16,9 +16,8 @@ namespace Client.Models
         public object p {
             set; get;
         }
-        public void retrunE() {
-            var ep = "asdfsdf";
-            Console.WriteLine(ep);
+        public object rq {
+            set; get;
         }
     }
 }

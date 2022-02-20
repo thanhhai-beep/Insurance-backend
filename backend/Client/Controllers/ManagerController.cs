@@ -96,5 +96,35 @@ namespace Client.Controllers
             }
             return RedirectToAction("Policy");
         }
+
+        // Request 
+        public ActionResult Request()
+        {
+            var name = HttpContext.Session.GetString("SSLogin");
+            if (name == null)
+            {
+                return RedirectToAction("Login", "Login");
+            }
+            var request = JsonConvert.DeserializeObject<List<ProfileResult>>(client.GetStringAsync(url + "RequestDetails/").Result);
+            ViewData["request"] = request;
+            return View();
+        }
+        public ActionResult updateStatus(RequestDetail rq)
+        {
+            var rqId = rq.Id;
+            try
+            {
+                var model = client.PutAsJsonAsync<RequestDetail>(url + "RequestDetails/" + rqId,rq).Result;
+                if (model.IsSuccessStatusCode)
+                {
+                    return RedirectToAction("Request");
+                }
+            }
+            catch
+            {
+                return BadRequest();
+            }
+            return View();
+        }
     }
 }

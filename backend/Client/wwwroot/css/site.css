@@ -111,4 +111,9 @@ feedback {
     height: 95px;
     top: 50px;
     background-color: white;
+    border-radius:5px;
+    display:none;
+}
+.user-panel:hover ~ .profile-modal{
+    display:block;
 }
