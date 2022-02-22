@@ -8,6 +8,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using AspNetCoreHero.ToastNotification.Abstractions;
 
 namespace Client.Controllers
 {
@@ -16,9 +17,11 @@ namespace Client.Controllers
         private readonly string url = "http://localhost:40316/api/";
         HttpClient client = new HttpClient();
         private readonly InsuranceDBContext _con;
-        public LoginController(InsuranceDBContext con)
+        private readonly INotyfService _notyf;
+        public LoginController(InsuranceDBContext con, INotyfService notyf)
         {
             _con = con;
+            _notyf = notyf;
         }
         [HttpGet]
         public ActionResult Login()
@@ -36,9 +39,11 @@ namespace Client.Controllers
                 {
                     HttpContext.Session.SetString("SSLogin", email);
                     HttpContext.Session.SetString("Username", login.Fname + login.Lname);
+                    HttpContext.Session.SetString("SSImage", login.Image);
                     HttpContext.Session.SetInt32("EmpId", login.EmpId);
                     if (login.IsAdmin == 1)
-                    { 
+                    {
+                        _notyf.Success("Welcome" + login.Fname + login.Lname, 5);
                         return RedirectToAction("DashBoard", "Admin");
                     }
                     else
@@ -48,13 +53,13 @@ namespace Client.Controllers
                 }
                 else
                 {
-                    ViewBag.Mess = "Username or password is";
+                    _notyf.Error("Your username or password is invalid",5);
                     return View();
                 }
             }
             else
             {
-                ViewBag.Mess = "Username or password is incorrect";
+                _notyf.Error("Your username or password is invalid",5);
                 return View();
             }
         }

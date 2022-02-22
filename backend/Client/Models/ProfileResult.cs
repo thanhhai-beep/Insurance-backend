@@ -19,5 +19,9 @@ namespace Client.Models
         public object rq {
             set; get;
         }
+
+        public object hp {
+            set; get;
+        }
     }
 }

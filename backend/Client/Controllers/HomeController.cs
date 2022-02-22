@@ -1,4 +1,5 @@
-﻿using Client.Models;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Client.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -16,10 +17,12 @@ namespace Client.Controllers
     {
         private readonly string url = "http://localhost:40316/api/";
         HttpClient client = new HttpClient();
+        private readonly INotyfService _notify;
         private readonly ILogger<HomeController> _logger;
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, INotyfService notyf)
         {
             _logger = logger;
+            _notify = notyf;
         }
 
         public IActionResult Index()
@@ -31,8 +34,12 @@ namespace Client.Controllers
         {
             return View();
         }
-        public IActionResult HomePages()
+        public ActionResult HomePages()
         {
+            var policy = JsonConvert.DeserializeObject<IEnumerable<Policy>>(client.GetStringAsync(url + "Admin/").Result);
+            var company = JsonConvert.DeserializeObject<IEnumerable<CompanyDetail>>(client.GetStringAsync(url + "CompanyDetails/").Result);
+            ViewData["policy"] = policy;
+            ViewData["company"] = company;
             return View();
         }
         public ActionResult EmpFeedback()
@@ -48,18 +55,18 @@ namespace Client.Controllers
                 var model = client.PostAsJsonAsync<Feedback>(url + "Feedbacks/", fb).Result;
                 if (model.IsSuccessStatusCode)
                 {
-                    ViewBag.Mess = "Inserted successfull!!";
+                    _notify.Success("Send Feedback Success",5);
                 }
                 else
                 {
-                    ViewBag.Mess = "Inserted faild!!";
+                    _notify.Error("Send Feedback Error", 5);
                 }
             }
             catch (Exception)
             {
                 return BadRequest();
             }
-            return View();
+            return RedirectToAction("HomePages");
         }
 
         // Request Detail
@@ -71,29 +78,30 @@ namespace Client.Controllers
             ViewData["data"] = emp;
             ViewData["policy"] = policy;
             ViewData["company"] = company;
-            return View(ViewData);
+            return View();
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult EmpRequest(RequestDetail rq)
         {
+            rq.RequestDate = System.DateTime.Now;
             try
             {
                 var model = client.PostAsJsonAsync<RequestDetail>(url + "RequestDetails/", rq).Result;
                 if (model.IsSuccessStatusCode)
                 {
-                    ViewBag.Mess = "Inserted successfull!!";
+                    _notify.Success("Send Request Success",5);
                 }
                 else
                 {
-                    ViewBag.Mess = "Inserted faild!!";
+                    _notify.Error("Send Request Failed", 5);
                 }
             }
             catch (Exception)
             {
                 return BadRequest();
             }
-            return View();
+            return RedirectToAction("HomePages");
         }
     }
 }

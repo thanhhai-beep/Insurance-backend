@@ -1,31 +1,13 @@
 ﻿<div class="sidebar sidebar-profile">
-    <ul class="profile-modal">
-        <li class="link-modal">
-            <a href="/Login/Profile/@Context.Session.GetInt32("EmpId")" class="d-block">Profile</a>
-        </li>
-        <li class="link-modal">
-            <a href="/Login/Logout" class="d-block">Logout</a>
-        </li>
-    </ul>
     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
         <div class="image">
-            <img src="~/ADdist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
+            <img src="~/@Context.Session.GetString("SSImage")" class="img-circle elevation-2" alt="User Image">
         </div> 
         <div class="info">
             @using Microsoft.AspNetCore.Http;
             <p>
                 <a href="/Login/Profile/@Context.Session.GetInt32("EmpId")" class="d-block">@Context.Session.GetString("Username")</a>
             </p>
-        </div>
-    </div>
-    <div class="form-inline">
-        <div class="input-group" data-widget="sidebar-search">
-            <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
-            <div class="input-group-append">
-                <button class="btn btn-sidebar">
-                    <i class="fas fa-search fa-fw"></i>
-                </button>
-            </div>
         </div>
     </div>
     <!-- Sidebar Menu -->
@@ -111,7 +93,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link">
-                        <i class="fal fa-siren-on"></i>
+                        <i class="fas fa-book"></i>
                         <p>
                             Policy
                             <i class="fas fa-angle-left right"></i>
@@ -141,8 +123,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Manager" asp-action="Request">
-                        <i class="fas fa-comment"></i>
+                    <a class="nav-link" asp-controller="Manager" asp-action="Request">        
+                        <i class="far fa-envelope"></i>
                         <p>
                             Employee request
                         </p>

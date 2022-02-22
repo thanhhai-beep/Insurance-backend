@@ -17,7 +17,7 @@
                     <div class="col-md-6">
                         <div class="card card-primary" style="background-color: #f5f5f5">
                             <div class="card-header">
-                                <h3 class="card-title">General</h3>
+                                <h3 class="card-title"></h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                         <i class="fas fa-minus"></i>
@@ -26,29 +26,20 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputName">Company name</label>
-                                    <input type="text" asp-for="CompanyName" id="inputName" class="form-control">
+                                    <label for="inputName">Company name <span style="color:red;">*</span></label>
+                                    <input type="text" asp-for="CompanyName" id="inputName" class="form-control" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="inputName">Address</label>
-                                    <input type="text" asp-for="Address" id="inputName" class="form-control">
+                                    <label for="inputName">Address <span style="color:red;">*</span></label>
+                                    <input type="text" asp-for="Address" id="inputName" class="form-control" required>
                                 </div>
-                                @*<div class="form-group">
-                                    <label for="inputStatus">Status</label>
-                                    <select id="inputStatus" class="form-control custom-select">
-                                        <option selected disabled>Select one</option>
-                                        <option>On Hold</option>
-                                        <option>Canceled</option>
-                                        <option>Success</option>
-                                    </select>
-                                </div>*@
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6">
                         <div class="card card-secondary" style="background-color: #f5f5f5">
                             <div class="card-header">
-                                <h3 class="card-title">Budget</h3>
+                                <h3 class="card-title"></h3>
                                 <div class="card-tools">
                                     <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
                                         <i class="fas fa-minus"></i>
@@ -57,19 +48,20 @@
                             </div>
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="inputDescription">Phone</label>
-                                    <input type="text" asp-for="Phone" id="inputName" class="form-control">
+                                    <label for="inputDescription">Phone <span style="color:red;">*</span></label>
+                                    <input type="text" asp-for="Phone" id="inputName" class="form-control" required>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Company Url</label>
-                                    <input type="text" asp-for="CompanyUrl" id="inputName" class="form-control">
+                                    <input type="text" asp-for="CompanyUrl" id="inputName" class="form-control" required>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-11">
+                    <div class="col-4"></div>
+                    <div class="col-4">
                         <button type="submit" class="btn btn-success float-right">Create new Company</button>
                     </div>
                 </div>

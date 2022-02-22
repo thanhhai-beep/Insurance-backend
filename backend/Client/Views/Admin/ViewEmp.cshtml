@@ -1,0 +1,52 @@
+﻿@model Client.Models.Employee
+    div class="wrapper">
+<partial name="../Shared/_NavbarAdmin.cshtml" />
+<div class="content-wrapper">
+    <section class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h1 style="font-size:45px;">Employee Details</h1>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-4">
+                    <div class="card card-primary card-outline">
+                        <div class="card-body box-profile ">
+                            <ul class="list-group list-group-unbordered mb-3">
+                                <li class="list-group-item">
+                                    <b>Frist Name</b> <p class="float-right" style="color:black;">@Html.DisplayFor(model => model.Fname)</p>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Last Name</b> <p class="float-right" style="color:black;">@Html.DisplayFor(model => model.Lname)</p>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Phone</b> <p class="float-right" style="color:black;">@Html.DisplayFor(model => model.Phone)</p>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Address</b> <p class="float-right" style="color:black;">@Html.DisplayFor(model => model.Address)</p>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Email</b> <p class="float-right" style="color:black;">@Html.DisplayFor(model => model.Email)</p>
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Image</b> <img class="float-right" src="~/@Model.Image" width="70" height="70"  alt="Image" style="border-radius:55%;" />
+                                </li>
+                                <li class="list-group-item">
+                                    <b>Start Date</b> <p class="float-right" style="color:black;">@Html.DisplayFor(model => model.Startdate)</p>
+                                </li>
+                                @*<li class="list-group-item">
+                                    <b>End Date</b> <p class="float-right" style="color:black;">@Html.DisplayFor(model => model.Enddate)</p>
+                                </li>*@
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

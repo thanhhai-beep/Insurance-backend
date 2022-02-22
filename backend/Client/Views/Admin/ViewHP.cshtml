@@ -1,0 +1,24 @@
+﻿@using Newtonsoft.Json;
+<partial name="../Shared/_NavbarAdmin.cshtml" />
+<div class="card-body box-profile ">
+    @foreach (var pro in ViewData["hos"] as IList<ProfileResult>)
+    {
+        var e = pro.hp.ToString();
+        var resultE = JsonConvert.DeserializeObject<HospitalInfo>(e);
+
+        <ul class="list-group list-group-unbordered mb-3">
+            <li class="list-group-item">
+                <b>Hospital Name</b> <p class="float-right">@resultE.HospitalName</p>
+            </li>
+            <li class="list-group-item">
+                <b>Comapny</b> <p class="float-right">@resultE.Phone</p>
+            </li>
+            <li class="list-group-item">
+                <b>Address</b> <p class="float-right">@resultE.Address</p>
+            </li>
+            <li class="list-group-item">
+                <b>Policy</b> <p class="float-right">@resultE.Url</p>
+            </li>
+        </ul>
+    }
+    </div>

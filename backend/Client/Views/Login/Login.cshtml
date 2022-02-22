@@ -1,27 +1,26 @@
-﻿<div class="row">
-    <div class="col-3 col-md-4 col-lg-4"></div>
-    <div class="col-6 col-md-4 col-lg-3">
-        <form asp-action="Login" method="post" class="form-login">
-            <div class="container">
-                <h1 class="text-center">Login</h1>
-                <hr>
-                <label for="email"><b>UesrName</b></label>
-                <input type="text" name="email" class="ip_us" required />
-                <label for="psw"><b>Password</b></label>
-                <input type="password" name="password" />
-                <label>
-                    <input type="checkbox" checked="checked" name="remem" value="true" class="ip_pw" style="margin-bottom:15px">
-                    <input type="hidden" name="remem" value="false" />Remember
-                </label>
-                <div style="color:red; font-size:22px;">
-                    @ViewBag.mess
+﻿<div class="imageIP">
+    <div class="row">
+        <div class="col-3 col-md-4 col-lg-4"></div>
+        <div class="col-6 col-md-4 col-lg-3">
+            <form asp-action="Login" method="post" class="form-login">
+                <div class="container">
+                    <h1 class="text-center" style="color:deeppink">Login</h1>
+                    <hr>
+                    <label for="email"><b style="color:white">UesrName</b></label>
+                    <input type="text" name="email" class="ip_us" required />
+                    <label for="psw"><b style="color:white">Password</b></label>
+                    <input type="password" name="password" />
+                    <label>
+                        <input type="checkbox" checked="checked" name="remem" value="true" class="ip_pw" style="margin-bottom:15px; color:white">
+                        <input type="hidden" name="remem" value="false" />Remember
+                    </label>
+                    <br />
+                    <div class="clearfix">
+                        <button type="submit" class="signupbtn">Login</button>
+                    </div>
                 </div>
-                <br />
-                <div class="clearfix">
-                    <button type="submit" class="signupbtn">Login</button>
-                </div>
-            </div>
-        </form>
+            </form>
+        </div>
+        <div class="col-3 col-md-4 col-lg-4"></div>
     </div>
-    <div class="col-3 col-md-4 col-lg-4"></div>
 </div>

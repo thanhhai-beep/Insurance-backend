@@ -13,7 +13,7 @@
         <div class="col-5">
             <div class="p-2 form-search">
                 <div class="search-hp">
-                    <form asp-action="Policy" method="get">
+                    <form asp-action="" method="get">
                         <p class="search-title">Search Name</p>
                         <input type="text" name="searchname" class="search" />
                         <button type="submit" class="btn-search"><i class="fas fa-search fa-fw"></i></button>
@@ -97,7 +97,7 @@
                                         <input type="hidden" name="PolicyId" value="@request.PolicyId" />
                                         <input type="hidden" name="CompanyId" value="@request.CompanyId" />
                                         <input type="hidden" name="Status" value="true" />
-                                        Pending <button type="submit" style="width: 10px; height: 20px; color: black; background: #f2f2f2"><i class="far fa-circle"></i></button>
+                                        Pending <button type="submit" style="width: 10px; height: 20px; color: black; background: none"><i class="far fa-circle"></i></button>
                                     </form>
                                 </td>
                                 }
@@ -107,7 +107,7 @@
                                         </i>
                                         View
                                     </a>
-                                    <a class="btn btn-danger btn-sm" href="/Manager/DelPolicy/@policy.Id">
+                                    <a class="btn btn-danger btn-sm" href="/Manager/DelRequest/@request.Id">
                                         <i class="fas fa-trash">
                                         </i>
                                         Delete

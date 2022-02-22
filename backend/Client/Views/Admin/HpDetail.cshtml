@@ -1,0 +1,37 @@
+﻿@model Client.Models.HospitalInfo
+    div class="wrapper">
+    <partial name="../Shared/_NavbarAdmin.cshtml" />
+    <div class="content-wrapper">
+        <section class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 style="font-size:45px;">Hospital Details</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-4">
+                        <div class="card card-primary card-outline">
+                            <div class="card-body box-profile ">
+                                <ul class="list-group list-group-unbordered mb-3">
+                                    <li class="list-group-item">
+                                        <b>Hospital Name</b> <p class="float-right" style="color:black;">@Html.DisplayFor(model => model.HospitalName)</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Address</b> <p class="float-right" style="color:black;">@Html.DisplayFor(model => model.Address)</p>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Url</b> <p class="float-right" style="color:black;">@Html.DisplayFor(model => model.Url)</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>

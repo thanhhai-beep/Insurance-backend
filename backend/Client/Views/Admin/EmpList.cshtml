@@ -60,6 +60,9 @@
                                 Email
                             </th>
                             <th>
+                                Roles
+                            </th>
+                            <th>
                                 Image
                             </th>
                             <th style="width: 15%" class="text-center">
@@ -88,6 +91,18 @@
                             <td class="project-state text-left">
                                 @item.Email
                             </td>
+                            @if (@item.IsAdmin == 1)
+                            {
+                                <td class="project-state text-left">
+                                    Admin
+                                </td>
+                            }
+                            else
+                            {
+                                <td class="project-state text-left">
+                                    User
+                                </td>
+                            }
                             <td class="project-state text-left">
                                 <ul class="list-inline">
                                     <li class="list-inline-item">
@@ -96,23 +111,23 @@
                                 </ul>
                             </td>
                             <td class="project-actions text-left">
-                                <a class="btn btn-primary btn-sm" href="#">
+                                <a class="btn btn-primary btn-sm" href="/Admin/ViewEmp/@item.EmpId">
                                     <i class="fas fa-eye">
                                     </i>
                                     View
                                 </a>
-                                <a class="btn btn-info btn-sm" href="/Admin/EditEmp/@item.EmpId">
-                                    <i class="fas fa-pencil-alt">
-                                    </i>
-                                    Edit
-                                </a>
+                                @if (@item.IsAdmin != 1)
+                                {
+
                                 <a class="btn btn-danger btn-sm" href="/Admin/DelEmp/@item.EmpId">
                                     <i class="fas fa-trash">
                                     </i>
                                     Delete
                                 </a>
-                            </td>
-                        </tr>
+                                }
+
+                                </td>
+                            </tr>
                             }
                         }
                     </tbody>

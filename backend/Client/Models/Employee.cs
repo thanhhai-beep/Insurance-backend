@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 #nullable disable
 
@@ -9,6 +10,7 @@ namespace Client.Models
     {
         public int EmpId { get; set; }
         public string Fname { get; set; }
+        [DataType(DataType.Password)]
         public string Password { get; set; }
         public string Lname { get; set; }
         public string Phone { get; set; }

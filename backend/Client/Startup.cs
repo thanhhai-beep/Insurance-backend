@@ -26,7 +26,11 @@ namespace Client
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-           
+            services.AddNotyf(config =>
+            {
+                config.DurationInSeconds = 10;
+                config.IsDismissable = true;
+            });
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddSession();
             services.AddDbContext<InsuranceDBContext>(options =>

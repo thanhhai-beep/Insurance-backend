@@ -1,4 +1,5 @@
-﻿using Client.Models;
+﻿using AspNetCoreHero.ToastNotification.Abstractions;
+using Client.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
@@ -16,8 +17,17 @@ namespace Client.Controllers
     {
         private readonly string url = "http://localhost:40316/api/";
         HttpClient client = new HttpClient();
-        public IActionResult Dashboard()
+        private readonly INotyfService _notify;
+
+        public AdminController(INotyfService notify)
         {
+            _notify = notify;
+        }
+
+        public ActionResult Dashboard()
+        {
+            var list = JsonConvert.DeserializeObject(client.GetStringAsync(url + "Security/").Result);
+            ViewData["list"] = list;
             return View();
         }
 
@@ -32,6 +42,15 @@ namespace Client.Controllers
             var emp = JsonConvert.DeserializeObject<IEnumerable<Employee>>(client.GetStringAsync(url + "Employees?searchname=" + searchname).Result);
             return View(emp);
         }
+
+        //emp details
+        public ActionResult ViewEmp(int id)
+        {
+            var emp = JsonConvert.DeserializeObject<Employee>(client.GetStringAsync(url + "Employees/" + id).Result);
+            return View(emp);
+        }
+        //end emp details
+
         public ActionResult AddEmp()
         {
             var name = HttpContext.Session.GetString("SSLogin");
@@ -62,11 +81,11 @@ namespace Client.Controllers
                 var model = client.PostAsJsonAsync<Employee>(url + "Employees/", emp).Result;
                 if (model.IsSuccessStatusCode)
                 {
-                    ViewBag.Mess = "Inserted successfull!!";
+                    _notify.Success("Create Employee Success", 5);
                 }
                 else
                 {
-                    ViewBag.Mess = "Inserted faild!!";
+                    _notify.Error("Create Failed", 5);
                 }
             }
             catch (Exception)
@@ -75,7 +94,7 @@ namespace Client.Controllers
             }
             return RedirectToAction("EmpList");
         }
-        public ActionResult EditEmp(int? id)
+        public async Task<ActionResult> EditEmp(int? id)
         {
             var name = HttpContext.Session.GetString("SSLogin");
             if (name == null)
@@ -87,24 +106,15 @@ namespace Client.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditEmp(int id, Employee emp, IFormFile file)
+        public ActionResult EditEmp(int id, Employee emp)
         {
-            if(file != null)
-            {
-                string filename = Path.GetFileName(file.FileName);
-                string file_path = Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot/imageEmp", filename);
-                using (var stream = new FileStream(file_path, FileMode.Create))
-                {
-                    await file.CopyToAsync(stream);
-                }
-                emp.Image = "imageEmp/" + filename;
-            }
             try
             {
                 var model = client.PutAsJsonAsync<Employee>(url + "Employees/" + id, emp).Result;
                 if (model.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Dashboard");
+                    _notify.Success("Update Employee Success", 5);
+                    return RedirectToAction("EmpList");
                 }
             }
             catch
@@ -118,7 +128,7 @@ namespace Client.Controllers
             var model = client.DeleteAsync(url + "Employees/" + id).Result;
             if (model.IsSuccessStatusCode)
             {
-                TempData["Mess"] = "Deleted successfull!!!!!!!!!!!!!!!";
+                _notify.Success("Delete Employee Success", 5);
             }
             return RedirectToAction("EmpList");
         }
@@ -139,7 +149,7 @@ namespace Client.Controllers
             var model = client.DeleteAsync(url + "Feedbacks/" + id).Result;
             if (model.IsSuccessStatusCode)
             {
-                TempData["Mess"] = "Deleted successfull!!!!!!!!!!!!!!!";
+                _notify.Success("Delete Feedback Success", 5);
             }
             return RedirectToAction("FeedBackList");
         }
@@ -172,19 +182,28 @@ namespace Client.Controllers
                 var model = client.PostAsJsonAsync<HospitalInfo>(url + "HospitalInfoes/", hp).Result;
                 if (model.IsSuccessStatusCode) 
                 {
-                    ViewBag.Mess = "Inserted successfull!!";
+                    _notify.Success("Create Hospital Success", 5);
                 }
                 else
                 {
-                    ViewBag.Mess = "Inserted faild!!";
+                    _notify.Error("Create Hospital Failed", 5);
                 }
             }
             catch (Exception)
             {
                 return BadRequest();
             }
-            return View();
+            return RedirectToAction("HospitalInfoesList");
         }
+
+
+        public ActionResult HpDetail(int? id)
+        {
+            var hp = JsonConvert.DeserializeObject<HospitalInfo>(client.GetStringAsync(url + "HospitalInfoes/" + id).Result);
+            return View(hp);
+        }
+
+
         public ActionResult EditHp(int? id)
         {
             var name = HttpContext.Session.GetString("SSLogin");
@@ -204,6 +223,7 @@ namespace Client.Controllers
                 var model = client.PutAsJsonAsync<HospitalInfo>(url + "HospitalInfoes/" + id, hp).Result;
                 if (model.IsSuccessStatusCode)
                 {
+                    _notify.Success("Update Hospital Success", 5);
                     return RedirectToAction("HospitalInfoesList");
                 }
             }
@@ -218,7 +238,7 @@ namespace Client.Controllers
             var model = client.DeleteAsync(url + "HospitalInfoes/" + id).Result;
             if (model.IsSuccessStatusCode)
             {
-                TempData["Mess"] = "Deleted successfull!!!";
+                _notify.Success("Delete Hospital Success");
             }
             return RedirectToAction("HospitalInfoesList");
         }
@@ -251,18 +271,18 @@ namespace Client.Controllers
                 var model = client.PostAsJsonAsync<CompanyDetail>(url + "CompanyDetails/", cn).Result;
                 if (model.IsSuccessStatusCode)
                 {
-                    ViewBag.Mess = "Inserted successfull!!";
+                    _notify.Success("Create Company Success", 5);
                 }
                 else
                 {
-                    ViewBag.Mess = "Inserted faild!!";
+                    _notify.Error("Create Company Failed", 5);
                 }
             }
             catch (Exception)
             {
                 return BadRequest();
             }
-            return View();
+            return RedirectToAction("Company");
         }
         public ActionResult EditCompany(int? id)
         {
@@ -297,7 +317,7 @@ namespace Client.Controllers
             var model = client.DeleteAsync(url + "CompanyDetails/" + id).Result;
             if (model.IsSuccessStatusCode)
             {
-                TempData["Mess"] = "Deleted successfull!!!!!!!!!!!!!!!";
+                _notify.Success("Delete Company Success", 5);
             }
             return RedirectToAction("Company");
         }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
 using System.Threading.Tasks;
+using AspNetCoreHero.ToastNotification.Abstractions;
 using Client.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -15,6 +16,14 @@ namespace Client.Controllers
     {
         private readonly string url = "http://localhost:40316/api/";
         HttpClient client = new HttpClient();
+        private readonly INotyfService _notify;
+
+        public ManagerController(INotyfService notify)
+        {
+            _notify = notify;
+        }
+
+
         //Policy
         public IActionResult Policy(string searchname)
         {
@@ -46,19 +55,27 @@ namespace Client.Controllers
                 var model = client.PostAsJsonAsync<Policy>(url + "Policies/", policy).Result;
                 if (model.IsSuccessStatusCode)
                 {
-                    ViewBag.Mess = "Inserted successfull!!";
+                    _notify.Success("Create Policy Success", 5);
                 }
                 else
                 {
-                    ViewBag.Mess = "Inserted faild!!";
+                    _notify.Error("Create policy Failed", 5);
                 }
             }
             catch (Exception)
             {
                 return BadRequest();
             }
-            return View();
+            return RedirectToAction("Policy");
         }
+
+        
+        public ActionResult DetailPolicy(int? id)
+        {
+            var plc = JsonConvert.DeserializeObject<Policy>(client.GetStringAsync(url + "Policies/" + id).Result);
+            return View(plc);
+        }
+
         public ActionResult EditPolicy(int? id)
         {
             var name = HttpContext.Session.GetString("SSLogin");
@@ -78,7 +95,8 @@ namespace Client.Controllers
                 var model = client.PutAsJsonAsync<Policy>(url + "Policies/" + id, cn).Result;
                 if (model.IsSuccessStatusCode)
                 {
-                    return RedirectToAction("Company");
+                    _notify.Success("Update Policy Success", 5);
+                    return RedirectToAction("Policy");
                 }
             }
             catch
@@ -92,7 +110,7 @@ namespace Client.Controllers
             var model = client.DeleteAsync(url + "Policies/" + id).Result;
             if (model.IsSuccessStatusCode)
             {
-                TempData["Mess"] = "Deleted successfull!!!!!!!!!!!!!!!";
+                _notify.Success("Delete Policy Success", 5);
             }
             return RedirectToAction("Policy");
         }
@@ -117,6 +135,7 @@ namespace Client.Controllers
                 var model = client.PutAsJsonAsync<RequestDetail>(url + "RequestDetails/" + rqId,rq).Result;
                 if (model.IsSuccessStatusCode)
                 {
+                    _notify.Success("Update Request Success", 5);
                     return RedirectToAction("Request");
                 }
             }
@@ -126,5 +145,16 @@ namespace Client.Controllers
             }
             return View();
         }
+
+        public ActionResult DelRequest(int id)
+        {
+            var model = client.DeleteAsync(url + "RequestDetails/" + id).Result;
+            if (model.IsSuccessStatusCode)
+            {
+                _notify.Error("Delete Request Success", 5);
+            }
+            return RedirectToAction("Request");
+        }
+
     }
 }
