@@ -173,7 +173,7 @@ ul.navbar-nav.ml-lg-auto.text-center {
 /*-- //header --*/
 /* banner */
 .banner {
-	background: url(../images/banner.jpg) center no-repeat;
+	background: url(../images/HomePages/banner.jpg) center no-repeat;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -1637,12 +1637,12 @@ button {
 .profile {
 	display: none;
 	position: absolute;
-	width: 300px;
-	height: 100px;
+	width: 230px;
+	height: 99px;
 	padding: 30px;
 	border-radius: 4px;
-	right:-118px;
-	top:15px;
+	right:-80px;
+	top:25px;
 }
 .name {
 	font-weight: 500;

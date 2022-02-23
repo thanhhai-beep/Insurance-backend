@@ -50,7 +50,7 @@
                                 <div class="form-group">
                                     <label for="inputDescription">Employee</label>
                                     <input type="hidden" name="EmpId" value="@Context.Session.GetInt32("EmpId")" id="inputName" class="form-control">
-                                    <input type="text" name="" value="@Context.Session.GetString("Username")" id="inputName" class="form-control fctr">
+                                    <input type="text" name="" value="@Context.Session.GetString("Username")" id="inputName" class="form-control fctr" disabled>
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Policy</label>
@@ -64,9 +64,9 @@
                                 <div class="form-group">
                                     <label for="inputName">Company</label>
                                     <select id="inputStatus" name="CompanyId" class="form-control custom-select">
-                                        @foreach (var cp in ViewData["company"] as IList<CompanyDetail>)
+                                        @foreach (var cp in ViewData["policy"] as IList<Policy>)
                                         {
-                                            <option value="@cp.Id">@cp.CompanyName</option>
+                                            <option value="@cp.Id">@cp.PolicyName</option>
                                         }
                                     </select>
                                 </div>

@@ -1,12 +1,15 @@
 ﻿@model Client.Models.Feedback
-    <partial name="../Shared/_header.cshtml" />
+@using Microsoft.AspNetCore.Http;
+<partial name="../LayoutHome/_Header.cshtml">
     <div class="row">
         <div class="col-4"></div>
         <div class="col-4">
-            <h3 class="text-center title-feedback">Your feedback</h3>
+            <h3 class="text-center title-feedback  pt-5">Your feedback</h3>
             <div class="container feedback">
                 <form asp-action="EmpFeedback">
-                    <label for="title">Full Name</label>
+                    <label for="title">Name</label>
+                    <input type="text" id="fname" asp-for="EmpId" value="@Context.Session.GetString("Username")" disabled placeholder="Title">
+                    <label for="title">Title</label>
                     <input type="text" id="fname" asp-for="Title" placeholder="Full name..">
                     <label for="subject">Content</label>
                     <textarea id="subject" class="content-fb" asp-for="Content" placeholder="Write something.." rows="3"></textarea>
@@ -15,4 +18,4 @@
             </div>
         </div>
     </div>
-<div class="col-4"></div>
+    <div class="col-4"></div>

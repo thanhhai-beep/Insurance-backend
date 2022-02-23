@@ -1,6 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Http;
 <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-gradient-secondary">
+    <nav class="navbar navbar-expand-lg navbar-light" style=" background-color: #0093d0 !important;">
         <h1>
             <a class="navbar-brand text-white" href="/Home/HomePages">
                 Insurance
@@ -17,6 +17,9 @@
                 <li class="nav-item  mr-lg-3 mt-lg-0 mt-3">
                     <a class="nav-link scroll" href="/Home/EmpRequest">Request</a>
                 </li>
+                <li class="nav-item  mr-lg-3 mt-lg-0 mt-3">
+                    <a class="nav-link scroll" href="/Home/EmpFeedBack">Feedback</a>
+                </li>
                 <li class="nav-item mr-lg-3 mt-lg-0 mt-3">
                     @{
                         var logout = @Context.Session.GetString("SSLogin");
@@ -28,7 +31,7 @@
                         {
                             <div class="show-prfile">
                                 <p class="name">@Context.Session.GetString("Username")</p>
-                                <ul class="profile">
+                                <ul class="profile" style="background-color:aqua">
                                     <li class="chang-pass"><a class="nav-link scroll" href="UpdatePro/@Context.Session.GetInt32("EmpId")">Update Profile</a></li>
                                     <li class="chang-pass">
                                         <a class="nav-link scroll" href="/Login/Logout">Logout</a>

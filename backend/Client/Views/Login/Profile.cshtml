@@ -1,4 +1,5 @@
 ﻿@using Newtonsoft.Json;
+@model Client.Models.Employee
 <div class="wrapper">
     <partial name="../Shared/_NavbarAdmin.cshtml" />
     <div class="content-wrapper">
@@ -17,43 +18,21 @@
                     <div class="col-sm-4">
                         <div class="card card-primary card-outline">
                             <div class="card-body box-profile PrIP">
-                                @foreach (var pro in ViewData["emp"] as IList<ProfileResult>)
-                                {
-                                    var e = pro.e.ToString();
-                                    var resultE = JsonConvert.DeserializeObject<Employee>(e);
-                                    var cn = pro.cn.ToString();
-                                    var company = JsonConvert.DeserializeObject<CompanyDetail>(cn);
-                                    var p = pro.p.ToString();
-                                    var policy = JsonConvert.DeserializeObject<Policy>(p);
-
                                     <div class="text-center">
                                         <img class="profile-user-img img-fluid img-circle"
-                                             src="~/@resultE.Image"
+                                             src="~/@Model.Image"
                                              alt="User profile picture">
                                     </div>
-                                    <h3 class="profile-username text-center">@resultE.Fname @resultE.Lname</h3>
-                                    <p class="text-muted text-center">@resultE.Email</p>
-                                    <ul class="list-group list-group-unbordered mb-3">
-                                        <li class="list-group-item">
-                                            <b>Phone</b> <a class="float-right">@resultE.Phone</a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>Address</b> <a class="float-right">@resultE.Address</a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>Comapny</b> <a class="float-right">@company.CompanyName</a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>Comapny Url</b> <a class="float-right">@company.CompanyUrl</a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>Policy</b> <a class="float-right">@policy.PolicyName</a>
-                                        </li>
-                                        <li class="list-group-item">
-                                            <b>Policy Description</b> <a class="float-right">@policy.PolicyDesc</a>
-                                        </li>
-                                    </ul>
-                                }
+                                    <h3 class="profile-username text-center">@Model.Fname @Model.Lname</h3>
+                                    <p class="text-muted text-center">@Model.Email</p>
+                                <ul class="list-group list-group-unbordered mb-3">
+                                    <li class="list-group-item">
+                                        <b>Phone</b> <a class="float-right">@Model.Phone</a>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <b>Address</b> <a class="float-right">@Model.Address</a>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     </div>

@@ -7,4 +7,4 @@ build_property.PublishSingleFile =
 build_property.IncludeAllContentForSelfExtract = 
 build_property._SupportedPlatformList = Android,iOS,Linux,macOS,Windows
 build_property.RootNamespace = Client
-build_property.ProjectDir = D:\HAI\react-js\Insurance-backend-API\backend\Client\
+build_property.ProjectDir = D:\Clone\Insurance-backend\backend\Client\

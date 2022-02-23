@@ -70,15 +70,19 @@ namespace Client.Controllers
         }
         public ActionResult Profile(int? id)
         {
-            var res = JsonConvert.DeserializeObject<List<ProfileResult>>(client.GetStringAsync(url + "Security/" + id).Result);
-            ViewData["emp"] = res;
-            return View();
+            var emp = JsonConvert.DeserializeObject<Employee>(client.GetStringAsync(url + "Employees/" + id).Result);
+            return View(emp);
         }
         public ActionResult Logout()
         {
             HttpContext.Session.Remove("SSLogin");
             HttpContext.Session.Remove("Username");
             HttpContext.Session.Remove("EmpId");
+            HttpContext.Session.Remove("Fname");
+            HttpContext.Session.Remove("Lname");
+            HttpContext.Session.Remove("pass");
+            HttpContext.Session.Remove("phone");
+            HttpContext.Session.Remove("address");
             return RedirectToAction("Login");
         }
     }
