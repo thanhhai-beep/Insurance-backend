@@ -1,5 +1,6 @@
 ﻿using AspNetCoreHero.ToastNotification.Abstractions;
 using Client.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
@@ -40,6 +41,30 @@ namespace Client.Controllers
             var company = JsonConvert.DeserializeObject<IEnumerable<CompanyDetail>>(client.GetStringAsync(url + "CompanyDetails/").Result);
             ViewData["policy"] = policy;
             ViewData["company"] = company;
+            return View();
+        }
+        public ActionResult UpdatePro(int? id)
+        {
+            var cus = JsonConvert.DeserializeObject<Employee>(client.GetStringAsync(url + "Employees/" + id).Result);
+            return View(cus);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult UpdatePro(int id, Employee emp)
+        {
+            try
+            {
+                var model = client.PutAsJsonAsync<Employee>(url + "Employees/" + id, emp).Result;
+                if (model.IsSuccessStatusCode)
+                {
+                    _notify.Success("Update Employee Success", 5);
+                    return RedirectToAction("HomePages");
+                }
+            }
+            catch
+            {
+                return BadRequest();
+            }
             return View();
         }
         public ActionResult EmpFeedback()

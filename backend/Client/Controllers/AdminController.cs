@@ -94,35 +94,6 @@ namespace Client.Controllers
             }
             return RedirectToAction("EmpList");
         }
-        public async Task<ActionResult> EditEmp(int? id)
-        {
-            var name = HttpContext.Session.GetString("SSLogin");
-            if (name == null)
-            {
-                return RedirectToAction("Login", "Login");
-            }
-            var emp = JsonConvert.DeserializeObject<Employee>(client.GetStringAsync(url + "Employees/" + id).Result);
-            return View(emp);
-        }
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult EditEmp(int id, Employee emp)
-        {
-            try
-            {
-                var model = client.PutAsJsonAsync<Employee>(url + "Employees/" + id, emp).Result;
-                if (model.IsSuccessStatusCode)
-                {
-                    _notify.Success("Update Employee Success", 5);
-                    return RedirectToAction("EmpList");
-                }
-            }
-            catch
-            {
-                return BadRequest();
-            }
-            return View();
-        }
         public ActionResult DelEmp(int id)
         {
             var model = client.DeleteAsync(url + "Employees/" + id).Result;

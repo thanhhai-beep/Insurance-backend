@@ -29,7 +29,7 @@
                             <div class="show-prfile">
                                 <p class="name">@Context.Session.GetString("Username")</p>
                                 <ul class="profile">
-                                    <li class="chang-pass"><a class="nav-link scroll">Update Profile</a></li>
+                                    <li class="chang-pass"><a class="nav-link scroll" href="UpdatePro/@Context.Session.GetInt32("EmpId")">Update Profile</a></li>
                                     <li class="chang-pass">
                                         <a class="nav-link scroll" href="/Login/Logout">Logout</a>
                                     </li>
@@ -37,10 +37,8 @@
                             </div>
                         }
                     }
-
                 </li>
             </ul>
         </div>
-
     </nav>
 </header>

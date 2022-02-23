@@ -46,6 +46,10 @@ namespace backend.Controllers
                               select new {
                                   e, cn, p
                               };
+            if(profile == null)
+            {
+                return Ok();
+            }
             return Ok(profile);
         }
     }

@@ -1644,12 +1644,24 @@ button {
 	right:-118px;
 	top:15px;
 }
-.name{
-	font-weight:500;
+.name {
+	font-weight: 500;
 }
 .show-prfile:hover .profile{
 	display:block;
 }
 .show-prfile{
 	position:relative;
+}
+.modal-header{
+	width:100%;
+}
+.update-user{
+	height:40px;
+	margin: 0px;
+}
+.lable-update {
+	float: left;
+	font-size: 14px;
+	margin-bottom:0px;
 }

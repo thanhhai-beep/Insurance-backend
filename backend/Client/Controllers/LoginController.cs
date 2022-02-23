@@ -41,6 +41,11 @@ namespace Client.Controllers
                     HttpContext.Session.SetString("Username", login.Fname + login.Lname);
                     HttpContext.Session.SetString("SSImage", login.Image);
                     HttpContext.Session.SetInt32("EmpId", login.EmpId);
+                    HttpContext.Session.SetString("Fname", login.Fname);
+                    HttpContext.Session.SetString("Lname", login.Lname);
+                    HttpContext.Session.SetString("pass", login.Password);
+                    HttpContext.Session.SetString("phone", login.Phone);
+                    HttpContext.Session.SetString("address", login.Address);
                     if (login.IsAdmin == 1)
                     {
                         _notyf.Success("Welcome" + login.Fname + login.Lname, 5);

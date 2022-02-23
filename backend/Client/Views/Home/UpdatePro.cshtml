@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNetCore.Http;
+<partial name="../LayoutHome/_Header.cshtml" />
+<div class="modal-body container">
+    @model Client.Models.Employee
+    <form asp-action="UpdatePro" method="post" class="form">
+        <div class="form-group m-0">
+            <label class="text-left lable-update">Fisrt Name</label>
+            <input class="form-control update-user" value="@Model.Startdate" name="Startdate" type="hidden">
+            <input class="form-control update-user" value="@Model.Enddate" name="Enddate" type="hidden">
+            <input class="form-control update-user" value="@Model.IsAdmin" name="IsAdmin" type="hidden">
+            <input class="form-control update-user" value="@Model.Image" name="Image" type="hidden">
+            <input class="form-control update-user" value="@Model.PolicyId" name="PolicyId" type="hidden">
+            <input class="form-control update-user" value="@Model.CompanyId" name="CompanyId" type="hidden">
+            <input class="form-control update-user" value="@Model.EmpId" name="EmpId" type="hidden">
+            <input class="form-control update-user" value="@Model.Fname" name="FName" type="text">
+        </div>
+        <div class="form-group m-0">
+            <label class="text-left lable-update">Last Name</label>
+            <input class="form-control update-user" value="@Model.Lname" name="Lname" type="text">
+        </div>
+        <div class="form-group m-0">
+            <label class="text-left lable-update">Email</label>
+            <input class="form-control update-user" value="@Model.Email" name="Email" type="text">
+        </div>
+        <div class="form-group m-0">
+            <label class="text-left lable-update">Password</label>
+            <input class="form-control update-user" value="@Model.Password" name="Password" type="password">
+        </div>
+        <div class="form-group m-0">
+            <label class="text-left lable-update">Address</label>
+            <input class="form-control update-user" value="@Model.Address" name="Address" type="text">
+        </div>
+        <div class="form-group m-0">
+            <label class="text-left lable-update">Phone</label>
+            <input class="form-control update-user" value="@Model.Phone" name="Phone" type="text">
+        </div>
+        <div class="form-group float-right">
+            <button class="btn btn-success btn-lg float-right" type="submit">Update</button>
+        </div>
+    </form>
+</div>
