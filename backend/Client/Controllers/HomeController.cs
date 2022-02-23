@@ -97,10 +97,8 @@ namespace Client.Controllers
         // Request Detail
         public ActionResult EmpRequest()
         {
-            var emp = JsonConvert.DeserializeObject<IEnumerable<Employee>>(client.GetStringAsync(url + "Employees/").Result);
-            var policy = JsonConvert.DeserializeObject<IEnumerable<Policy>>(client.GetStringAsync(url + "Policies/").Result);
+            var policy = JsonConvert.DeserializeObject<IEnumerable<Policy>>(client.GetStringAsync(url + "Admin/").Result);
             var company = JsonConvert.DeserializeObject<IEnumerable<CompanyDetail>>(client.GetStringAsync(url + "CompanyDetails/").Result);
-            ViewData["data"] = emp;
             ViewData["policy"] = policy;
             ViewData["company"] = company;
             return View();

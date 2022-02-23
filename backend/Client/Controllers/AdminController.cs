@@ -26,8 +26,8 @@ namespace Client.Controllers
 
         public ActionResult Dashboard()
         {
-            var list = JsonConvert.DeserializeObject(client.GetStringAsync(url + "Security/").Result);
-            ViewData["list"] = list;
+            //var list = JsonConvert.DeserializeObject(client.GetStringAsync(url + "Security/").Result);
+            //ViewData["list"] = list;
             return View();
         }
 

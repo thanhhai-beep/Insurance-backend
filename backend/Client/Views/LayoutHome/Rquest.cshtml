@@ -50,14 +50,14 @@
                                 <div class="form-group">
                                     <label for="inputDescription">Employee</label>
                                     <input type="hidden" name="EmpId" value="@Context.Session.GetInt32("EmpId")" id="inputName" class="form-control">
-                                    <input type="text" name="EmpId" id="inputName" class="form-control fctr">
+                                    <input type="text" name="" value="@Context.Session.GetString("Username")" id="inputName" class="form-control fctr">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputName">Policy</label>
                                     <select id="inputStatus" name="PolicyId" class="form-control custom-select">
-                                        @foreach (var policy in ViewData["policy"] as IList<Policy>)
+                                        @foreach (var cp in ViewData["company"] as IList<CompanyDetail>)
                                         {
-                                            <option value="@policy.Id">@policy.PolicyName</option>
+                                            <option value="@cp.Id">@cp.CompanyName</option>
                                         }
                                     </select>
                                 </div>

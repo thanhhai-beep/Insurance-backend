@@ -89,61 +89,6 @@
                     </div>
                 </div>
             </section>
-            <div class="contact-wthree" id="order">
-                <div class="container py-sm-5">
-                    <div class="title-section py-4">
-                        <h3 class="main-title-agile">Order</h3>
-                        <span class="title-line">
-                        </span>
-                    </div>
-                    <div class="row py-lg-5 py-4">
-                        <div class="offset-2"></div>
-                        <div class="col-lg-12 mt-lg-0 mt-5">
-                            <div class="register-top1">
-                                <form action="#" method="get" class="register-wthree">
-                                    <div class="form-group">
-                                        <div class="row">
-                                            <div class="col-md-6 mt-md-0 mt-4">
-                                                <label>Policy name</label>
-                                                <select id="inputStatus" name="PolicyId" class="form-control custom-select">
-                                                    @foreach (var policy in ViewData["policy"] as IList<Policy>)
-                                                    {
-                                                        <option value="@policy.Id">@policy.PolicyName</option>
-                                                    }
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <div class="row">
-                                            @using Microsoft.AspNetCore.Http;
-                                            <div class="col-md-6">
-                                                <label>Employee</label>
-                                                <input type="hidden" name="EmpId" value="@Context.Session.GetInt32("EmpId")" id="inputName" class="form-control">
-                                                <input type="text" value="@Context.Session.GetString("Username")" id="inputName" class="form-control" disabled>
-                                            </div>
-                                            <div class="col-md-6 mt-md-0 mt-4">
-                                                <label>Company Name</label>
-                                                <select id="inputStatus" name="CompanyId" class="form-control custom-select">
-                                                    @foreach (var cp in ViewData["company"] as IList<CompanyDetail>)
-                                                    {
-                                                        <option value="@cp.Id">@cp.CompanyName</option>
-                                                    }
-                                                </select>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-3">
-                                        <div class="col-md-12">
-                                            <button type="submit" class="btn btn-agile btn-block w-100 font-weight-bold text-uppercase">ADD</button>
-                                        </div>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="testimonials py-lg-5" id="about">
                 <div class="container py-5">
                     <div class="title-section pb-4">
